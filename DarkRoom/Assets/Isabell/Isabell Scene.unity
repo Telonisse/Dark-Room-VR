@@ -1058,7 +1058,7 @@ GameObject:
   - component: {fileID: 1397843550}
   - component: {fileID: 1397843549}
   m_Layer: 0
-  m_Name: Snap Grab Interactable
+  m_Name: SnapGrab Interactable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
