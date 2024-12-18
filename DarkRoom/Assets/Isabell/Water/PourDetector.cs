@@ -28,18 +28,22 @@ public class PourDetector : MonoBehaviour
             }
         }
 
-        //RaycastHit hit;
-        //if (Physics.Raycast(origin.position, Vector3.down, out hit, Mathf.Infinity))
-        //{
-        //    if (hit.collider.CompareTag(collisionTag))
-        //    {
-        //        Debug.Log("Collision detected with tag: " + collisionTag);
-        //        if (pourCheck == true)
-        //        {
-        //            Debug.Log("Pouring on " + hit.transform.name);
-        //        }
-        //    }
-        //}
+        RaycastHit hit;
+        if (Physics.Raycast(origin.position, Vector3.down, out hit, Mathf.Infinity))
+        {
+            if (hit.collider.CompareTag(collisionTag))
+            {
+                Debug.Log("Collision detected with tag: " + collisionTag);
+                if (pourCheck == true)
+                {
+                    Debug.Log("Pouring on " + hit.transform.name);
+                }
+            }
+        }
+        if (currentStream != null)
+        {
+            currentStream.transform.rotation = Quaternion.identity;
+        }
     }
 
     private void StartPour()
@@ -53,7 +57,7 @@ public class PourDetector : MonoBehaviour
     {
         Debug.Log("end");
         currentStream.End();
-        currentStream = null;
+        //currentStream = null;
     }
 
     private float CalculatePourAngle()

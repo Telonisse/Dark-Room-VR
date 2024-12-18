@@ -15,8 +15,8 @@ public class Stream : MonoBehaviour
 
     private void Start()
     {
-        MoveToPos(0, transform.position);
-        MoveToPos(1, transform.position);
+        MoveToPos(0, Vector3.zero);
+        MoveToPos(1, Vector3.zero);
     }
 
     public void Begin()
@@ -29,9 +29,12 @@ public class Stream : MonoBehaviour
         while (gameObject.activeSelf)
         {
             targetPos = FindEndPoint();
+            targetPos = transform.InverseTransformPoint(targetPos);
+            targetPos.x = 0;
+            targetPos.z = 0;
 
-            MoveToPos(0, transform.localPosition);
-            AnimateToPos(1, targetPos - transform.parent.position);
+            MoveToPos(0, Vector3.zero);
+            AnimateToPos(1, targetPos);
 
             yield return null;
         }
@@ -62,7 +65,6 @@ public class Stream : MonoBehaviour
         Physics.Raycast(ray, out hit, 2f);
 
         Vector3 endPoint = hit.collider ? hit.point : ray.GetPoint(2);
-        Debug.Log("Pouring on " + hit.transform.name);
 
         return endPoint;
     }
@@ -76,6 +78,8 @@ public class Stream : MonoBehaviour
     {
         Vector3 currentPoint = lineRenderer.GetPosition(index);
         Vector3 newPos = Vector3.MoveTowards(currentPoint, targetPos, Time.deltaTime * 1.75f);
+        newPos.x = 0;
+        newPos.z = 0;
         lineRenderer.SetPosition(index, newPos);
     }
 
