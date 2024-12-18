@@ -25,7 +25,7 @@ public class PourDetector : MonoBehaviour
 
     private void Update()
     {
-        bool pourCheck = CalculatePourAngle() < pourThreshhold && rend.material.GetFloat("_Fill") > -0.4f;
+        bool pourCheck = CalculatePourAngle() < pourThreshhold && rend.material.GetFloat("_Fill") > -0.5f;
 
         if (isPouring != pourCheck)
         {
@@ -40,12 +40,20 @@ public class PourDetector : MonoBehaviour
             }
         }
 
+        if (rend.material.GetFloat("_Fill") < -0.4)
+        {
+            liquid.GetComponent<Wobble>().Wobbles(true);
+        }
+        else
+        {
+            liquid.GetComponent<Wobble>().Wobbles(false);
+        }
+
         RaycastHit hit;
         if (Physics.Raycast(origin.position, Vector3.down, out hit, Mathf.Infinity))
         {
             if (hit.collider.CompareTag(collisionTag))
             {
-                Debug.Log("Collision detected with tag: " + collisionTag);
                 if (pourCheck == true)
                 {
                     Debug.Log("Pouring on " + hit.transform.name);
@@ -72,12 +80,36 @@ public class PourDetector : MonoBehaviour
             rend.material.SetFloat("_Fill", fill);
         }
     }
+    private void FillLiquid()
+    {
+        if (!isPouring)
+        {
+            float fill = rend.material.GetFloat("_Fill");
+            if (fill < maxLiquid)
+            {
+                fill += reduceRate * Time.deltaTime;
+            }
+            if(fill > maxLiquid)
+            {
+                fill = maxLiquid;
+            }
+            rend.material.SetFloat("_Fill", fill);
+        }
+    }
 
     private void StartPour()
     {
         Debug.Log("start");
         currentStream = CreateStream();
         currentStream.Begin();
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if(other.tag == "Rain")
+        {
+            FillLiquid();
+        }
     }
 
     private void EndPour()
