@@ -48,7 +48,7 @@ Material:
     m_Floats:
     - _Alpha: 1
     - _Depth: 0.35
-    - _Fill: 0.7
+    - _Fill: 1
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Strength: 0.8
