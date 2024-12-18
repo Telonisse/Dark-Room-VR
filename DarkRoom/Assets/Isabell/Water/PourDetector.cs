@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class PourDetector : MonoBehaviour
 {
@@ -8,12 +9,23 @@ public class PourDetector : MonoBehaviour
 
     [SerializeField] string collisionTag = "Ground";
 
+    [SerializeField] GameObject liquid;
+    [SerializeField] float reduceRate = 1;
+    private Renderer rend;
+    private float maxLiquid;
+
     private bool isPouring = false;
     private Stream currentStream = null;
 
+    private void Start()
+    {
+        rend = liquid.GetComponent<Renderer>();
+        maxLiquid = rend.material.GetFloat("_Fill");
+    }
+
     private void Update()
     {
-        bool pourCheck = CalculatePourAngle() < pourThreshhold;
+        bool pourCheck = CalculatePourAngle() < pourThreshhold && rend.material.GetFloat("_Fill") > -0.4f;
 
         if (isPouring != pourCheck)
         {
@@ -43,6 +55,21 @@ public class PourDetector : MonoBehaviour
         if (currentStream != null)
         {
             currentStream.transform.rotation = Quaternion.identity;
+        }
+
+        EmptyLiquid();
+    }
+
+    private void EmptyLiquid()
+    {
+        if (isPouring)
+        {
+            float fill = rend.material.GetFloat("_Fill");
+            if(fill > -0.5f)
+            {
+                fill -= reduceRate * Time.deltaTime;
+            }
+            rend.material.SetFloat("_Fill", fill);
         }
     }
 
