@@ -149,9 +149,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 182048952}
-  - {fileID: 1788308539}
-  - {fileID: 506888784}
-  - {fileID: 397260052}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &182048951
@@ -188,7 +185,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 2, z: 0.1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1788308539}
+  - {fileID: 506888784}
+  - {fileID: 397260052}
   m_Father: {fileID: 72024561}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!59 &182048953
@@ -1144,11 +1144,11 @@ Transform:
   m_GameObject: {fileID: 397260051}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.39199996, y: -0.18599999, z: -0.105}
-  m_LocalScale: {x: 1, y: 2, z: 0.1}
+  m_LocalPosition: {x: 0.39199996, y: -0.092999995, z: -1.55}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 72024561}
+  m_Father: {fileID: 182048952}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &397260053
 MonoBehaviour:
@@ -1261,11 +1261,11 @@ Transform:
   m_GameObject: {fileID: 506888783}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.39199996, y: 0, z: 0.09600001}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalPosition: {x: 0.39199996, y: 0, z: 0.9600001}
+  m_LocalScale: {x: 0.1, y: 0.05, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 72024561}
+  m_Father: {fileID: 182048952}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &506888785
 BoxCollider:
@@ -1561,7 +1561,7 @@ GameObject:
   - component: {fileID: 750499055}
   - component: {fileID: 750499054}
   - component: {fileID: 750499053}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Key
   m_TagString: Rain
   m_Icon: {fileID: 0}
@@ -1820,7 +1820,7 @@ GameObject:
   - component: {fileID: 802258034}
   - component: {fileID: 802258033}
   - component: {fileID: 802258032}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Physics Grab Interactable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2141,7 +2141,7 @@ GameObject:
   - component: {fileID: 1049198378}
   - component: {fileID: 1049198377}
   - component: {fileID: 1049198376}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Scaling Grab Interactable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2536,7 +2536,7 @@ GameObject:
   - component: {fileID: 1397843551}
   - component: {fileID: 1397843550}
   - component: {fileID: 1397843549}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: SnapGrab Interactable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2795,7 +2795,7 @@ GameObject:
   - component: {fileID: 1507175282}
   - component: {fileID: 1507175281}
   - component: {fileID: 1507175280}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Grab Interactable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3274,9 +3274,6 @@ GameObject:
   - component: {fileID: 1788308542}
   - component: {fileID: 1788308541}
   - component: {fileID: 1788308540}
-  - component: {fileID: 1788308544}
-  - component: {fileID: 1788308543}
-  - component: {fileID: 1788308545}
   m_Layer: 0
   m_Name: Handle 1
   m_TagString: Untagged
@@ -3293,11 +3290,11 @@ Transform:
   m_GameObject: {fileID: 1788308538}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.39199996, y: 0, z: -0.09600001}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalPosition: {x: 0.39199996, y: 0, z: -0.9600001}
+  m_LocalScale: {x: 0.1, y: 0.05, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 72024561}
+  m_Father: {fileID: 182048952}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1788308540
 BoxCollider:
@@ -3373,85 +3370,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1788308538}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!59 &1788308543
-HingeJoint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1788308538}
-  serializedVersion: 3
-  m_ConnectedBody: {fileID: 0}
-  m_ConnectedArticulationBody: {fileID: 0}
-  m_Anchor: {x: 0, y: 0, z: 0}
-  m_Axis: {x: 0, y: 0, z: -1}
-  m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
-  m_UseSpring: 1
-  m_Spring:
-    spring: 5
-    damper: 1
-    targetPosition: -180
-  m_UseMotor: 0
-  m_Motor:
-    targetVelocity: 0
-    force: 0
-    freeSpin: 0
-  m_UseLimits: 1
-  m_ExtendedLimits: 0
-  m_UseAcceleration: 0
-  m_Limits:
-    min: 140
-    max: 180
-    bounciness: 0
-    bounceMinVelocity: 0.2
-    contactDistance: 0
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_EnableCollision: 0
-  m_EnablePreprocessing: 1
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
---- !u!54 &1788308544
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1788308538}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &1788308545
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1788308538}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5ca507bc39914340aeffb4aac6f5d2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  door: {fileID: 182048951}
 --- !u!1 &2076672815
 GameObject:
   m_ObjectHideFlags: 0
@@ -3574,7 +3492,7 @@ GameObject:
   - component: {fileID: 2119404517}
   - component: {fileID: 2119404516}
   - component: {fileID: 2119404515}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: 2 Hand Grab Interactable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
