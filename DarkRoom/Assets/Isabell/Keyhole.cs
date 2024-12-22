@@ -29,8 +29,7 @@ public class Keyhole : MonoBehaviour
     {
         if (other.tag == keyTag)
         {
-            Debug.Log(rotation.eulerAngles.z + 45);
-            if (other.transform.rotation.eulerAngles.z >= rotation.eulerAngles.z + 90)
+            if (other.transform.rotation.eulerAngles.z >= rotation.eulerAngles.z + 45)
             {
                 transform.rotation = other.transform.rotation;
                 unlocked = true;

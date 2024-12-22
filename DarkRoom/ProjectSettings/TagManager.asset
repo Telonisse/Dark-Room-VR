@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Rain
+  - Key
   layers:
   - Default
   - TransparentFX
