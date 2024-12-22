@@ -6020,7 +6020,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60523e0647cc6ab43acc73cb266a32a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_InteractionManager: {fileID: 0}
+  m_InteractionManager: {fileID: 1657341232}
   m_InteractionLayers:
     m_Bits: 4294967295
   m_Handedness: 0
