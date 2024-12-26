@@ -14,8 +14,7 @@ public class Keyhole : MonoBehaviour
     {
         //door no move
         door.transform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-        //door.transform.GetComponent<XRGrabInteractable>().enabled = false;
-        GetComponent<XRSocketInteractor>().enabled = false;
+        door.GetComponent<XRGrabInteractable>().enabled = false;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -29,10 +28,9 @@ public class Keyhole : MonoBehaviour
     {
         if (other.tag == keyTag)
         {
-            //other.transform.rotation.eulerAngles.z >= rotation.eulerAngles.z + 45
             if (Mathf.DeltaAngle(other.transform.rotation.eulerAngles.z , rotation.eulerAngles.z) <= -45)
             {
-                transform.rotation = other.transform.rotation;
+                //transform.rotation = other.transform.rotation;
                 unlocked = true;
             }
             if (unlocked == true)
@@ -50,9 +48,9 @@ public class Keyhole : MonoBehaviour
         if (unlocked == true)
         {
             Debug.Log("Unlocking");
-            door.transform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-            door.transform.GetComponent<XRGrabInteractable>().enabled = true;
-            GetComponent<XRSocketInteractor>().enabled = true;
+            //door.transform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+            //door.transform.GetComponent<XRGrabInteractable>().enabled = true;
+            //GetComponent<XRSocketInteractor>().enabled = true;
         }
     }
 
