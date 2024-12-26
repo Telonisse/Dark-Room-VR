@@ -28,7 +28,7 @@ public class Keyhole : MonoBehaviour
     {
         if (other.tag == keyTag)
         {
-            if (Mathf.DeltaAngle(other.transform.rotation.eulerAngles.z , rotation.eulerAngles.z) <= -45)
+            if (Mathf.DeltaAngle(other.transform.rotation.eulerAngles.z , rotation.eulerAngles.z) <= -60)
             {
                 //transform.rotation = other.transform.rotation;
                 unlocked = true;

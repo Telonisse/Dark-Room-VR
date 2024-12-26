@@ -30,7 +30,7 @@ public class DoorHandle : MonoBehaviour
     private void Update()
     {
         Debug.Log(transform.rotation.eulerAngles.x);
-        if (transform.rotation.eulerAngles.x < rotateCheck && door.GetComponentInChildren<Keyhole>().Unlocked() == true)
+        if (transform.rotation.eulerAngles.x < rotateCheck && transform.rotation.eulerAngles.x > 10 && door.GetComponentInChildren<Keyhole>().Unlocked() == true)
         {
             Destroy(this.GetComponent<HingeJoint>());
             Destroy(this.GetComponent<XRGrabInteractable>());
@@ -38,5 +38,14 @@ public class DoorHandle : MonoBehaviour
             door.transform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
             door.transform.GetComponent<XRGrabInteractable>().enabled = true;
         }
+    }
+
+    public void Grabbbed()
+    {
+        this.GetComponent<HingeJoint>().useSpring = false;
+    }    
+    public void Released()
+    {
+        this.GetComponent<HingeJoint>().useSpring = true;
     }
 }
