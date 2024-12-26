@@ -35,12 +35,19 @@ public class Keyhole : MonoBehaviour
                 transform.rotation = other.transform.rotation;
                 unlocked = true;
             }
+            if (unlocked == true)
+            {
+                other.GetComponent<BoxCollider>().enabled = false;
+                Destroy(other.GetComponent<XRGrabInteractable>());
+                Destroy(other.GetComponent<Rigidbody>());
+                other.transform.parent = transform;
+            }
         }
     }
 
     private void Update()
     {
-        if (unlocked == true && door.transform.GetComponent<XRGrabInteractable>().enabled == false)
+        if (unlocked == true)
         {
             Debug.Log("Unlocking");
             door.transform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
