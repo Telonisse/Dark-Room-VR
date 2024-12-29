@@ -693,7 +693,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 479068925}
   m_Enabled: 1
-  m_VideoClip: {fileID: 0}
+  m_VideoClip: {fileID: 32900000, guid: 1f72b71422fd9ed44b1301511b2cf417, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -854,7 +854,7 @@ MonoBehaviour:
   - {fileID: 32900000, guid: 1f72b71422fd9ed44b1301511b2cf417, type: 3}
   - {fileID: 32900000, guid: 2a71f1620c6df19469d96b04cfc7241b, type: 3}
   - {fileID: 32900000, guid: bc6c56fdd4b7dcb42874734ea8be18c1, type: 3}
-  videoplay: {fileID: 0}
+  videoplay: {fileID: 479068927}
 --- !u!1 &484274800 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4961613739203554748, guid: d745f894945b8a143b13f1de659f8099, type: 3}
@@ -2734,7 +2734,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4922582553321831162, guid: 76f3439a0ae796e4b81bee3f91f888ee, type: 3}
       propertyPath: m_Name
-      value: Push Button
+      value: TempRemote
       objectReference: {fileID: 0}
     - target: {fileID: 5419331889293473514, guid: 76f3439a0ae796e4b81bee3f91f888ee, type: 3}
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.size

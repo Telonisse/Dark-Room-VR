@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Video;
 
 public class TurnOnTV : MonoBehaviour
 {
@@ -35,10 +36,15 @@ public class TurnOnTV : MonoBehaviour
         }
         else if (flipflop && !tapeInVhsPlayer)
         {
-            screenOff.SetActive(false);
-            screenOn.SetActive(false);
-            screenStatic.SetActive(true);
-            screenOn.GetComponent<RandomizeVideoPlayer>().RandomVideoToPlayer();                
+
+            screenOn.GetComponent<RandomizeVideoPlayer>().RandomVideoToPlayer();
+            if (screenOn.GetComponent<VideoPlayer>().clip != null)
+            {
+                screenOff.SetActive(false);
+                screenOn.SetActive(false);
+                screenStatic.SetActive(true);
+            }
+            else Debug.Log("No Clip set");
         }
         else
         {
