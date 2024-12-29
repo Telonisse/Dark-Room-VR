@@ -8,7 +8,7 @@ public class Keyhole : MonoBehaviour
     [SerializeField] bool unlocked = false;
     [SerializeField] GameObject door;
 
-    public Quaternion rotation;
+    private Quaternion rotation;
 
     private void Start()
     {

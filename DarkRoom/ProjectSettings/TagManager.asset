@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Rain
   - Key
+  - LampBulb
+  - BulbBad
   layers:
   - Default
   - TransparentFX

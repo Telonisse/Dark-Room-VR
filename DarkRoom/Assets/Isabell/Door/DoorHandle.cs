@@ -29,7 +29,7 @@ public class DoorHandle : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(transform.rotation.eulerAngles.x);
+        //Debug.Log(transform.rotation.eulerAngles.x);
         if (transform.rotation.eulerAngles.x < rotateCheck && transform.rotation.eulerAngles.x > 10 && door.GetComponentInChildren<Keyhole>().Unlocked() == true)
         {
             Destroy(this.GetComponent<HingeJoint>());
