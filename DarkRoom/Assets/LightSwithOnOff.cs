@@ -68,6 +68,8 @@ public class LightSwithOnOff : MonoBehaviour
     private int maxIntValue;
     private int minIntValue;
 
+    bool NonDamagedBulb = false;
+
     private void Start()
     {
         FloatToInt();        
@@ -98,7 +100,7 @@ public class LightSwithOnOff : MonoBehaviour
     public void LightOnOffUpdate()
     {
 
-        if (onCollider && animator.GetBool(parameterName) == true )
+        if (NonDamagedBulb && onCollider && animator.GetBool(parameterName) == true )
         {
             activateAll = true;
             Invoke(nameof(AllLampsTurnOn), 0.5f);            
@@ -108,6 +110,11 @@ public class LightSwithOnOff : MonoBehaviour
             activateAll = false;
             Invoke(nameof(AllLampsTurnOff), 0.5f);
         }
+    }
+
+    public void ChangeBulb(bool bulb) // Call for this to make the lightbulb changed to non damaged, true for functional bulb and false for non functinal bulb.
+    {
+        NonDamagedBulb = bulb;
     }
 
     void AllLampsTurnOn()
