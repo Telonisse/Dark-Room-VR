@@ -14,6 +14,9 @@ public class LightSwithOnOff : MonoBehaviour
     [Tooltip("The Parameter bool that will be used for switching on or off")]
     [SerializeField]
     public string parameterName;
+
+    [Header("-------------- Colliders ---------------")]
+    [Header("-------------- FlipSwitch ---------------")]
     [Tooltip("the collider that will trigger on")]
     [SerializeField]
     public Collider turnOnCollider;
@@ -24,6 +27,11 @@ public class LightSwithOnOff : MonoBehaviour
     public Collider turnOffCollider;
     //private bool offcollider = false;
 
+    [Header("-------------- potentiometer ---------------")]
+    [Tooltip("the collider that will be used for rotational grab")]
+    [SerializeField]
+    public Collider nobbGrabPointCollider;
+    //private bool nobbIsGrabbed = false;
 
     [Header("------------------------------------------------" + "\n--------------To Be Added | WIP ---------------" + "\n------------------------------------------------")]
     
@@ -84,10 +92,10 @@ public class LightSwithOnOff : MonoBehaviour
             animator.SetBool(parameterName, false);
         }
 
-        AnimatorParameterUpdate();
+        LightOnOffUpdate();
     }
 
-    void AnimatorParameterUpdate()
+    public void LightOnOffUpdate()
     {
 
         if (onCollider && animator.GetBool(parameterName) == true )
@@ -133,7 +141,7 @@ public class LightSwithOnOff : MonoBehaviour
         }
     }
 
-    void PotentiometerUpdate()
+    public void PotentiometerUpdate()
     {
         //TODO: add logic here for the potatiometer
     }
