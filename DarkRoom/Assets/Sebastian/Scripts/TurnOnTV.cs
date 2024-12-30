@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Video;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class TurnOnTV : MonoBehaviour
 {
@@ -37,41 +38,45 @@ public class TurnOnTV : MonoBehaviour
 
     public void TurnOnTvScreen()
     {
-        flipflop = !flipflop;        
-
-        if (RaycastToTarget() && tapeInVhsPlayer && flipflop)
+        XRGrabInteractable grabInteractable = remote.GetComponent<XRGrabInteractable>();
+        if (grabInteractable != null && grabInteractable.isSelected)
         {
-            screenOff.SetActive(false);
-            screenOn.SetActive(true);
-            screenStatic.SetActive(false);
-        }
-        else if (RaycastToTarget() && flipflop && !tapeInVhsPlayer)
-        {
+            flipflop = !flipflop;
 
-            screenOn.GetComponent<RandomizeVideoPlayer>().RandomVideoToPlayer();
-            if (screenOn.GetComponent<VideoPlayer>().clip != null)
+            if (RaycastToTarget() && tapeInVhsPlayer && flipflop)
             {
                 screenOff.SetActive(false);
-                screenOn.SetActive(false);
-                screenStatic.SetActive(true);
-            }
-            else Debug.Log("No Clip set");
-        }
-        else
-        {
-            if (RaycastToTarget())
-            {
-                screenOff.SetActive(true);
-                screenOn.SetActive(false);
+                screenOn.SetActive(true);
                 screenStatic.SetActive(false);
             }
-        }
+            else if (RaycastToTarget() && flipflop && !tapeInVhsPlayer)
+            {
 
+                screenOn.GetComponent<RandomizeVideoPlayer>().RandomVideoToPlayer();
+                if (screenOn.GetComponent<VideoPlayer>().clip != null)
+                {
+                    screenOff.SetActive(false);
+                    screenOn.SetActive(false);
+                    screenStatic.SetActive(true);
+                }
+                else Debug.Log("No Clip set");
+            }
+            else
+            {
+                if (RaycastToTarget())
+                {
+                    screenOff.SetActive(true);
+                    screenOn.SetActive(false);
+                    screenStatic.SetActive(false);
+                }
+            }
+        }
+        else return;
     }
 
     bool RaycastToTarget()
     {
-        Ray ray = new Ray(remote.transform.position, remote.transform.forward);
+        Ray ray = new Ray(remote.transform.position, -remote.transform.forward);
 
         if (Physics.Raycast(ray,out RaycastHit hit, rayRange)) 
         {

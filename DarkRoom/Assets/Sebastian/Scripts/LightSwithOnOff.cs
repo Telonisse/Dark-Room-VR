@@ -38,7 +38,7 @@ public class LightSwithOnOff : MonoBehaviour
     [SerializeField]
     public GameObject lamp;
 
-    [Header("------------------------------------------------" + "\n--------------To Be Added | WIP ---------------" + "\n------------------------------------------------")]
+    [Header("------------------------------------------------" + "\n---------------To Be Added | WIP ---------------" + "\n------------------------------------------------")]
     
 
     [Tooltip("If using Potentiometer and not a switch (WIP, not added)")]

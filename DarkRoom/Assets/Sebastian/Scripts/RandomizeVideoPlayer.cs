@@ -6,37 +6,100 @@ public class RandomizeVideoPlayer : MonoBehaviour
 {
     [Tooltip("List of Videos that will be played at random")]
     [SerializeField]
-    public List<VideoClip> listOfVideos;
-            
-    [Tooltip("If left empty, it takes this objects Video player")]
-    [SerializeField]
-    public VideoPlayer videoplay;        
+    private List<VideoClip> listOfVideos;
 
-    private int videoindex = 0;
-  
+    [Tooltip("If left empty, it takes this object's Video Player")]
+    [SerializeField]
+    private VideoPlayer videoplay;
+
+    [Tooltip("The turned-off screen")]
+    [SerializeField]
+    private GameObject blackScreen;
+
+    private int videoindex = -1;
+
     void Start()
     {
-        if (videoplay == null) { videoplay = gameObject.AddComponent<VideoPlayer>(); }        
+        // Ensure the VideoPlayer is initialized
+        if (videoplay == null)
+        {
+            videoplay = gameObject.AddComponent<VideoPlayer>();
+        }
+
+        // Add the loopPointReached event listener
+        videoplay.loopPointReached += OnVideoStopped;
+
+        // Play the first video if there are videos in the list
+        if (listOfVideos != null && listOfVideos.Count > 0)
+        {
+            RandomVideoToPlayer();
+        }
     }
 
     public void RandomVideoToPlayer()
     {
         if (listOfVideos == null || listOfVideos.Count == 0)
-        {  Debug.LogWarning("List of videos is empty or null.");  return;  }
-
-        if (listOfVideos.Count == 1) {  videoindex = 0; }
-        else
         {
-            int i = videoindex;
-            while (videoindex == i)
-            { videoindex = UnityEngine.Random.Range(0, listOfVideos.Count); }
+            Debug.LogWarning("List of videos is empty or null.");
+            return;
         }
+
+        int previousIndex = videoindex;
+
+        // Generate a new random index that is different from the current one
+        do
+        {
+            videoindex = UnityEngine.Random.Range(0, listOfVideos.Count);
+        } while (videoindex == previousIndex);
+
         SetVideoToPlayer(videoindex);
     }
 
     private void SetVideoToPlayer(int index)
     {
+        // Assign the new video clip and play
         videoplay.clip = listOfVideos[index];
         videoplay.Play();
+
+        // Ensure the black screen is turned off
+        if (blackScreen != null)
+        {
+            blackScreen.SetActive(false);
+        }
+
+        // Reactivate the video player in case it was deactivated
+        videoplay.gameObject.SetActive(true);
+    }
+
+    private void OnVideoStopped(VideoPlayer vp)
+    {
+        // Handle video playback completion
+        TurnOffTv();
+    }
+
+    private void TurnOffTv()
+    {
+        // Turn off the video player and activate the black screen
+        if (videoplay != null)
+        {
+            videoplay.gameObject.SetActive(false);
+        }
+
+        if (blackScreen != null)
+        {
+            blackScreen.SetActive(true);
+        }
+
+        // Randomize a new video for the next play
+        RandomVideoToPlayer();
+    }
+
+    private void OnDestroy()
+    {
+        // Remove the event listener to avoid memory leaks
+        if (videoplay != null)
+        {
+            videoplay.loopPointReached -= OnVideoStopped;
+        }
     }
 }
