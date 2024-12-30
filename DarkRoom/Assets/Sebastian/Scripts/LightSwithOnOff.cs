@@ -33,6 +33,11 @@ public class LightSwithOnOff : MonoBehaviour
     public Collider nobbGrabPointCollider;
     //private bool nobbIsGrabbed = false;
 
+    [Header("-------- used for specific scene ---------")]
+    [Tooltip("The Animator from the where parameters will be effected")]
+    [SerializeField]
+    public GameObject lamp;
+
     [Header("------------------------------------------------" + "\n--------------To Be Added | WIP ---------------" + "\n------------------------------------------------")]
     
 
@@ -75,11 +80,6 @@ public class LightSwithOnOff : MonoBehaviour
         FloatToInt();        
     }
 
-    void Update()
-    {
-       // AnimatorParameterUpdate();
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other == this.turnOnCollider) 
@@ -99,6 +99,9 @@ public class LightSwithOnOff : MonoBehaviour
 
     public void LightOnOffUpdate()
     {
+        if (lamp.GetComponent<Light>().enabled == true)
+            NonDamagedBulb = true;
+        else NonDamagedBulb = false;
 
         if (NonDamagedBulb && onCollider && animator.GetBool(parameterName) == true )
         {
@@ -128,6 +131,7 @@ public class LightSwithOnOff : MonoBehaviour
                 {
                     listOfLamps[i].SetActive(true);
                 }
+                Debug.LogWarning("LAMPS ON");
             }
             else return;
         }
@@ -143,6 +147,7 @@ public class LightSwithOnOff : MonoBehaviour
                 {
                     listOfLamps[i].SetActive(false);
                 }
+                Debug.LogWarning("LAMPS OFF");
             }
             else return;
         }

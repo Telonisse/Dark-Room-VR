@@ -3,15 +3,25 @@ using UnityEngine.Video;
 
 public class TurnOnTV : MonoBehaviour
 {
-    [Tooltip("")]
+    [Tooltip("screen that shows Screen turned off")]
     [SerializeField]
     public GameObject screenOff;
-    [Tooltip("")]
+    [Tooltip("screen that shows Screen turned On")]
     [SerializeField]
     public GameObject screenOn;
-    [Tooltip("")]
+    [Tooltip("screen that shows a static or special Screen")]
     [SerializeField]
     public GameObject screenStatic;
+
+    [Tooltip("gameobject that will handle the raycasting and activate the tv")]
+    [SerializeField]
+    public GameObject remote;
+    [Tooltip("target to hit with raycast to activate tv with remote")]
+    [SerializeField]
+    public Transform targetRaycast;
+    [Tooltip("Range of raycast")]
+    [SerializeField]
+    public float rayRange = 10.0f;
 
     [Header("manual toggle for testing if VHS is in player")]
     public bool tapeInVhsPlayer = false;
@@ -27,14 +37,15 @@ public class TurnOnTV : MonoBehaviour
 
     public void TurnOnTvScreen()
     {
-        flipflop = !flipflop;
-        if (tapeInVhsPlayer && flipflop)
+        flipflop = !flipflop;        
+
+        if (RaycastToTarget() && tapeInVhsPlayer && flipflop)
         {
             screenOff.SetActive(false);
             screenOn.SetActive(true);
             screenStatic.SetActive(false);
         }
-        else if (flipflop && !tapeInVhsPlayer)
+        else if (RaycastToTarget() && flipflop && !tapeInVhsPlayer)
         {
 
             screenOn.GetComponent<RandomizeVideoPlayer>().RandomVideoToPlayer();
@@ -48,11 +59,24 @@ public class TurnOnTV : MonoBehaviour
         }
         else
         {
-            screenOff.SetActive(true);
-            screenOn.SetActive(false);
-            screenStatic.SetActive(false);
+            if (RaycastToTarget())
+            {
+                screenOff.SetActive(true);
+                screenOn.SetActive(false);
+                screenStatic.SetActive(false);
+            }
         }
 
     }
 
+    bool RaycastToTarget()
+    {
+        Ray ray = new Ray(remote.transform.position, remote.transform.forward);
+
+        if (Physics.Raycast(ray,out RaycastHit hit, rayRange)) 
+        {
+            return hit.transform == targetRaycast;
+        }
+        else return false;
+    }
 }
