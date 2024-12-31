@@ -128,7 +128,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 595516026137737833}
-  - component: {fileID: 6438058418289566134}
+  - component: {fileID: 1836616465049366212}
   - component: {fileID: 1129354608285323934}
   m_Layer: 0
   m_Name: SwitchOff
@@ -152,7 +152,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8611266285739121239}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &6438058418289566134
+--- !u!65 &1836616465049366212
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -167,12 +167,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.019759106, y: 0.015999997, z: 0.0076693133}
-  m_Center: {x: -0.0049877954, y: -2.439188e-10, z: -0.0041653537}
+  m_Center: {x: -0.0049877954, y: -2.439188e-10, z: 0.004165354}
 --- !u!114 &1129354608285323934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,7 +220,19 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6465467647149502358}
+        m_TargetAssemblyTypeName: SwitchLightOnOff, Assembly-CSharp
+        m_MethodName: DeactivateLamp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
       m_Calls: []
@@ -238,19 +250,7 @@ MonoBehaviour:
       m_Calls: []
   m_Activated:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6465467647149502358}
-        m_TargetAssemblyTypeName: SwitchLightOnOff, Assembly-CSharp
-        m_MethodName: DeactivateLamp
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_Deactivated:
     m_PersistentCalls:
       m_Calls: []
@@ -266,7 +266,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1812392012548565123}
-  - component: {fileID: 3257355934355010574}
+  - component: {fileID: 5916700506039871093}
   - component: {fileID: 8379927794401695669}
   m_Layer: 0
   m_Name: SwitchOn
@@ -290,7 +290,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8611266285739121239}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &3257355934355010574
+--- !u!65 &5916700506039871093
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -305,12 +305,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.019759106, y: 0.015999997, z: 0.0076693133}
-  m_Center: {x: -0.0049877954, y: -2.439188e-10, z: 0.004165354}
+  m_Center: {x: -0.0049877954, y: -2.439188e-10, z: -0.0041653537}
 --- !u!114 &8379927794401695669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,7 +358,19 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6465467647149502358}
+        m_TargetAssemblyTypeName: SwitchLightOnOff, Assembly-CSharp
+        m_MethodName: ActivateLamp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
       m_Calls: []
@@ -376,19 +388,7 @@ MonoBehaviour:
       m_Calls: []
   m_Activated:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6465467647149502358}
-        m_TargetAssemblyTypeName: SwitchLightOnOff, Assembly-CSharp
-        m_MethodName: ActivateLamp
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_Deactivated:
     m_PersistentCalls:
       m_Calls: []
