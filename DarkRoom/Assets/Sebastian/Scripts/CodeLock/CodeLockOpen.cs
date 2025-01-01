@@ -28,9 +28,16 @@ public class CodeLockOpen : MonoBehaviour
     [SerializeField]
     public AudioClip wrongSound;
 
+    [Tooltip("Animation to play to unlock")]
+    [SerializeField]
+    public Animator unlockAnimation;
+
+    [Tooltip("The Hock to remove collistions")]
+    [SerializeField]
+    public GameObject lockHock;
+
     private bool isUnLocked = false;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         

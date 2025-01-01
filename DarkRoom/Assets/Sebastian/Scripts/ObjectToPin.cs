@@ -14,6 +14,7 @@ public class ObjectToPin : MonoBehaviour
             {
                 Rigidbody rb = objectThatWillGetPin.GetComponent<Rigidbody>();
                 rb.isKinematic = true;
+                rb.useGravity = false;
                 isPinned = true;
                 Debug.Log($"{objectThatWillGetPin.name} has been pinned.");
             }
@@ -27,6 +28,7 @@ public class ObjectToPin : MonoBehaviour
             {
                 Rigidbody rb = objectThatWillGetPin.GetComponent<Rigidbody>();
                 rb.isKinematic = false;
+                rb.useGravity = true;
                 isPinned = false;
                 Debug.Log($"{objectThatWillGetPin.name} has been unpinned.");
             }
@@ -38,6 +40,7 @@ public class ObjectToPin : MonoBehaviour
         {
             Rigidbody rb = objectThatWillGetPin.GetComponent<Rigidbody>();
             rb.isKinematic = true;
+            rb.useGravity = false;
             isPinned = true;
             Debug.Log($"{objectThatWillGetPin.name} has been pinned.");
         }
@@ -50,6 +53,7 @@ public class ObjectToPin : MonoBehaviour
             {
                 Rigidbody rb = objectThatWillGetPin.GetComponent<Rigidbody>();
                 rb.isKinematic = false;
+                rb.useGravity = true;
                 isPinned = false;
                 Debug.Log($"{objectThatWillGetPin.name} has been unpinned.");
             }
