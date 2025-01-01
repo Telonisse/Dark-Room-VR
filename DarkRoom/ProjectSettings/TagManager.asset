@@ -8,6 +8,7 @@ TagManager:
   - Key
   - LampBulb
   - BulbBad
+  - Pinable
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - UI
   - Body
   - Interactable
-  - 
+  - Pinable
   - 
   - 
   - 
