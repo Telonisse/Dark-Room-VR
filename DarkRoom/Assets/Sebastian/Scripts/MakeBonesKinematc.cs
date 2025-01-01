@@ -17,7 +17,7 @@ public class MakeBonesKinematc : MonoBehaviour
         // adds all the children in this.gameobject.contains("bone") to the list objectsBones        
         foreach (Transform child in transform)
         {            
-            if (child.gameObject.name.ToLower().Contains("bone"))
+            if (child.gameObject.name.ToLower().Contains("Bone"))
             {                
                 objectBones.Add(child.gameObject);
             }
@@ -40,6 +40,7 @@ public class MakeBonesKinematc : MonoBehaviour
         {
             Rigidbody rb = obj.gameObject.GetComponent<Rigidbody>();
             rb.isKinematic = true;
+            Debug.Log(rb.isKinematic);
         }
     }
     public void ToggleKinematicOff()
@@ -48,6 +49,7 @@ public class MakeBonesKinematc : MonoBehaviour
         {
             Rigidbody rb = obj.gameObject.GetComponent<Rigidbody>();
             rb.isKinematic = false;
+            Debug.Log(rb.isKinematic);
         }
     }
 
