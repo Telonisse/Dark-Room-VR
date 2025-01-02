@@ -4,47 +4,30 @@ public class Month : MonoBehaviour
 {
     [SerializeField] int date;
 
-    [Tooltip("Number of day in a week (ex, tuesday would be 2)")]
+    [Tooltip("Number of day in a week (Sunday is 0, monday is 1...)")]
     [SerializeField] int startDay;
-    [SerializeField] int amountOfDays;
+    [SerializeField] int daysInMonth;
     [SerializeField] GameObject circle;
-
-    public int currentDay = 0;
-
-    private int weeks = 5;
-    private int days = 7;
-    private bool first = false;
+    [SerializeField] float spacingX = 0.22f;
+    [SerializeField] float spacingY = 0.22f;
+    [SerializeField] Vector3 firstDatePos;
+    public int columns = 7;
 
     private void Start()
     {
-        //date = Random.Range(1, amountOfDays + 1);
-        for (int i = 0; i < weeks; i++)
-        {
-            if (first == false)
-            {
-                for (int j = startDay; j < days; j++)
-                {
-                    currentDay += 1;
-                    if (currentDay == date)
-                    {
-                        Debug.Log(i + " , " + j);
-                        circle.transform.localPosition = new Vector3(circle.transform.localPosition.x - (0.22f * j), circle.transform.localPosition.y - (0.22f * i), circle.transform.localPosition.z);
-                    }
-                }
-            }
-            else
-            {
-                for (int j = 0; j < days; j++)
-                {
-                    currentDay += 1;
-                    if (currentDay == date)
-                    {
-                        Debug.Log(i + " , " + j);
-                        circle.transform.localPosition = new Vector3(circle.transform.localPosition.x - (0.22f * (j - 1)), circle.transform.localPosition.y - (0.22f * i), circle.transform.localPosition.z);
-                    }
-                }
-            }
-            first = true;
-        }
+        date = Random.Range(1, daysInMonth + 1);
+
+        int index = date + startDay - 1;
+        int row = index / columns;
+        int col = index % columns;
+
+        Vector3 datePosition = firstDatePos + new Vector3(-col * spacingX, -row * spacingY, 0);
+
+        circle.transform.localPosition = datePosition;
+    }
+
+    public int GetCode()
+    {
+        return date;
     }
 }
