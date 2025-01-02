@@ -16,8 +16,12 @@ public class ObjectToPin : MonoBehaviour
                 rb.isKinematic = true;
                 rb.useGravity = false;
                 isPinned = true;
+                GetAllChildrenRigBody getAllChildren = collision.gameObject.GetComponent<GetAllChildrenRigBody>();
+                getAllChildren.ToggleChildrenRBSettings(0, true);
+                getAllChildren.ToggleChildrenRBSettings(1, false);
                 Debug.Log($"{objectThatWillGetPin.name} has been pinned.");
             }
+
         }
     }
     private void OnCollisionExit(Collision collision)
@@ -30,8 +34,12 @@ public class ObjectToPin : MonoBehaviour
                 rb.isKinematic = false;
                 rb.useGravity = true;
                 isPinned = false;
+                GetAllChildrenRigBody getAllChildren = collision.gameObject.GetComponent<GetAllChildrenRigBody>();
+                getAllChildren.ToggleChildrenRBSettings(0, false);
+                getAllChildren.ToggleChildrenRBSettings(1, true);
                 Debug.Log($"{objectThatWillGetPin.name} has been unpinned.");
             }
+
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -42,8 +50,12 @@ public class ObjectToPin : MonoBehaviour
             rb.isKinematic = true;
             rb.useGravity = false;
             isPinned = true;
+            GetAllChildrenRigBody getAllChildren = other.gameObject.GetComponent<GetAllChildrenRigBody>();
+            getAllChildren.ToggleChildrenRBSettings(0, true);
+            getAllChildren.ToggleChildrenRBSettings(1, false);
             Debug.Log($"{objectThatWillGetPin.name} has been pinned.");
         }
+
     }
     private void OnTriggerExit(Collider other)
     {
@@ -55,8 +67,12 @@ public class ObjectToPin : MonoBehaviour
                 rb.isKinematic = false;
                 rb.useGravity = true;
                 isPinned = false;
+                GetAllChildrenRigBody getAllChildren = other.gameObject.GetComponent<GetAllChildrenRigBody>();
+                getAllChildren.ToggleChildrenRBSettings(0, false);
+                getAllChildren.ToggleChildrenRBSettings(1, true);
                 Debug.Log($"{objectThatWillGetPin.name} has been unpinned.");
             }
+
         }
     }
 }
