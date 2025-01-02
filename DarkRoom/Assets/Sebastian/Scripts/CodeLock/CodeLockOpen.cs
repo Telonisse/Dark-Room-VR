@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CodeLockOpen : MonoBehaviour
@@ -7,11 +8,13 @@ public class CodeLockOpen : MonoBehaviour
     [SerializeField]
     public List<GameObject> buttons = new List<GameObject>();
 
-    [Header("The Code will be in order of c1 to c4")]
-
-    [Tooltip("Code to unlock lock, remeber that 0 dont exist on this codelock")]
+    [Tooltip("calender that have the code")]
     [SerializeField]
-    public int c1 = 0, c2 = 0, c3 = 0, c4 = 0;
+    public GameObject calender;
+
+    private int c1 = 0, c2 = 0, c3 = 0, c4 = 0;
+    private Calendar calendcode;
+    private string code;
 
     [Tooltip("Dev mode to unlock and test code")]
     [SerializeField]
@@ -37,10 +40,12 @@ public class CodeLockOpen : MonoBehaviour
     public GameObject lockHock;
 
     private bool isUnLocked = false;
-
+    
     void Start()
     {
-        
+        calendcode = calender.GetComponent<Calendar>();
+        code = calendcode.GetCode();
+        splitStringCode(code);
     }
 
     public void CodeButtonPressedUpdater(int number)
@@ -82,5 +87,18 @@ public class CodeLockOpen : MonoBehaviour
     private void PlayCorrectCodeSound()
     {
 
+    }
+
+    private void splitStringCode(string code)
+    {
+        if (string.IsNullOrEmpty(code) || code.Length < 4)
+        { return; }
+        if (code.Length > 4)
+        {
+            char c1 = code[0];
+            char c2 = code[1];
+            char c3 = code[2];
+            char c4 = code[3];
+        }
     }
 }
