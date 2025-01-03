@@ -246,7 +246,7 @@ GameObject:
   - component: {fileID: 4115397875262502940}
   - component: {fileID: 5095553376097557954}
   m_Layer: 0
-  m_Name: Cube.001
+  m_Name: needle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -384,7 +384,7 @@ GameObject:
   - component: {fileID: 1606680277047855067}
   - component: {fileID: 8421448119432325777}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: nobb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

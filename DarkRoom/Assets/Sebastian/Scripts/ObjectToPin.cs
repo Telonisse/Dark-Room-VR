@@ -5,7 +5,9 @@ public class ObjectToPin : MonoBehaviour
     [SerializeField]
     public GameObject objectThatWillGetPin;
 
+    private bool gotChilden;
     private bool isPinned;
+
     private void OnCollisionEnter(Collision collision)
     {
         if (objectThatWillGetPin != null && !isPinned)
@@ -17,8 +19,11 @@ public class ObjectToPin : MonoBehaviour
                 rb.useGravity = false;
                 isPinned = true;
                 GetAllChildrenRigBody getAllChildren = collision.gameObject.GetComponent<GetAllChildrenRigBody>();
-                getAllChildren.ToggleChildrenRBSettings(0, true);
-                getAllChildren.ToggleChildrenRBSettings(1, false);
+                if (collision.gameObject.GetComponent<GetAllChildrenRigBody>() != null)
+                {
+                    getAllChildren.ToggleChildrenRBSettings(0, true);
+                    getAllChildren.ToggleChildrenRBSettings(1, false);
+                }
                 Debug.Log($"{objectThatWillGetPin.name} has been pinned.");
             }
 
@@ -35,8 +40,11 @@ public class ObjectToPin : MonoBehaviour
                 rb.useGravity = true;
                 isPinned = false;
                 GetAllChildrenRigBody getAllChildren = collision.gameObject.GetComponent<GetAllChildrenRigBody>();
-                getAllChildren.ToggleChildrenRBSettings(0, false);
-                getAllChildren.ToggleChildrenRBSettings(1, true);
+                if (collision.gameObject.GetComponent<GetAllChildrenRigBody>() != null)
+                {
+                    getAllChildren.ToggleChildrenRBSettings(0, false);
+                    getAllChildren.ToggleChildrenRBSettings(1, true);
+                }
                 Debug.Log($"{objectThatWillGetPin.name} has been unpinned.");
             }
 
@@ -51,8 +59,11 @@ public class ObjectToPin : MonoBehaviour
             rb.useGravity = false;
             isPinned = true;
             GetAllChildrenRigBody getAllChildren = other.gameObject.GetComponent<GetAllChildrenRigBody>();
-            getAllChildren.ToggleChildrenRBSettings(0, true);
-            getAllChildren.ToggleChildrenRBSettings(1, false);
+            if (other.gameObject.GetComponent<GetAllChildrenRigBody>() != null)
+            {
+                getAllChildren.ToggleChildrenRBSettings(0, true);
+                getAllChildren.ToggleChildrenRBSettings(1, false);
+            }
             Debug.Log($"{objectThatWillGetPin.name} has been pinned.");
         }
 
@@ -68,8 +79,11 @@ public class ObjectToPin : MonoBehaviour
                 rb.useGravity = true;
                 isPinned = false;
                 GetAllChildrenRigBody getAllChildren = other.gameObject.GetComponent<GetAllChildrenRigBody>();
-                getAllChildren.ToggleChildrenRBSettings(0, false);
-                getAllChildren.ToggleChildrenRBSettings(1, true);
+                if (other.gameObject.GetComponent<GetAllChildrenRigBody>() != null)
+                {
+                    getAllChildren.ToggleChildrenRBSettings(0, false);
+                    getAllChildren.ToggleChildrenRBSettings(1, true);
+                }
                 Debug.Log($"{objectThatWillGetPin.name} has been unpinned.");
             }
 
