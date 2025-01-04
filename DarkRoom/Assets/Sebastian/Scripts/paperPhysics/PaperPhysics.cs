@@ -1,110 +1,72 @@
-using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(SkinnedMeshRenderer))]
+[RequireComponent(typeof(Cloth))]
 public class PaperPhysics : MonoBehaviour
 {
-    private SkinnedMeshRenderer skinnedMeshRenderer;
-    private Mesh sharedMesh;
-    private Vector3[] originalVertices;
-    private Vector3[] currentVertices;
+    private Cloth cloth;
+    private Rigidbody rb;
 
-    // Parameters for stiffness and bending resistance
-    public float stiffness = 0.5f;
-    public float damping = 0.1f;
+    [Header("Air Physics Settings")]
+    public float detectionRadius = 0.5f; // Radius for detecting surfaces
+    public LayerMask groundLayer; // Layer for ground detection
+    private bool isInAir;
 
-    // Connections between vertices for springs
-    private List<Edge> edges = new List<Edge>();
+    [Header("Forces to Simulate Paper Behavior")]
+    public float downForce = 1f;    // Force to simulate gravity/drag
+    public float rightForce = 0.5f; // Horizontal force to simulate wind
+    public float forwardForce = 0.5f; // Forward force for motion
 
-    void Start()
-    {
-        // Get the SkinnedMeshRenderer and its sharedMesh
-        skinnedMeshRenderer = GetComponent<SkinnedMeshRenderer>();
-        sharedMesh = skinnedMeshRenderer.sharedMesh;
 
-        // Get the mesh vertices
-        originalVertices = sharedMesh.vertices;
-        currentVertices = (Vector3[])originalVertices.Clone();
+    private bool isPined;    
+    private void Awake()
+    {                
+        cloth = GetComponent<Cloth>();
+        rb = GetComponent<Rigidbody>();
 
-        // Initialize edges between vertices
-        InitializeEdges();
-    }
-
-    void Update()
-    {
-        if (GetComponent<Cloth>() != null)
+        if (cloth == null)
         {
-            // Cloth physics handles deformation
-            ApplyCustomClothLogic();
+            Debug.LogError("No Cloth component found on this GameObject.");
         }
-        else
-        {
-            // Simulate paper physics
-            SimulatePaperPhysics();
 
-            // Update the skinned mesh
-            sharedMesh.vertices = currentVertices;
-            sharedMesh.RecalculateNormals();
-            skinnedMeshRenderer.sharedMesh = sharedMesh;
+        if (rb == null)
+        {
+            Debug.LogError("No Rigidbody component found on this GameObject.");
         }
     }
 
-    void ApplyCustomClothLogic()
+    private void Update()
     {
-        // Perform custom Cloth logic if necessary
-        Debug.Log("Custom Cloth deformation logic can be applied here.");
-    }
-
-    void InitializeEdges()
-    {
-        // Define edges based on your SkinnedMeshRenderer's vertex layout
-        // Example: Connect vertices in a grid pattern
-    }
-
-    void SimulatePaperPhysics()
-    {
-        for (int i = 0; i < edges.Count; i++)
+        isPined = this.gameObject.GetComponentInParent<Rigidbody>();
+        if (!isPined)
         {
-            Edge edge = edges[i];
-
-            // Apply spring force between connected vertices
-            Vector3 force = CalculateSpringForce(edge);
-            currentVertices[edge.vertexA] += force * Time.deltaTime;
-            currentVertices[edge.vertexB] -= force * Time.deltaTime;
-
-            // Apply damping to reduce oscillation
-            ApplyDamping(edge);
+            CheckIfInAir();
+        }
+        if (isInAir)
+        {
+            ApplyPaperForces();
         }
     }
 
-    Vector3 CalculateSpringForce(Edge edge)
+    private void CheckIfInAir()
     {
-        Vector3 posA = currentVertices[edge.vertexA];
-        Vector3 posB = currentVertices[edge.vertexB];
-        Vector3 direction = posB - posA;
-        float distance = direction.magnitude;
-
-        // Hooke's law: F = -k * x
-        float stretch = distance - edge.restLength;
-        return stiffness * stretch * direction.normalized;
+        // Check if the paper is near the ground or surfaces
+        isInAir = !Physics.CheckSphere(transform.position, detectionRadius, groundLayer);
     }
 
-    void ApplyDamping(Edge edge)
+    private void ApplyPaperForces()
     {
-        // Implement damping to stabilize motion
+        // Apply the forces
+        Vector3 customForce = Vector3.down * downForce +
+                              Vector3.right * rightForce +
+                              Vector3.forward * forwardForce;
+
+        rb.AddForce(customForce, ForceMode.Force);
     }
 
-    private struct Edge
+    private void OnDrawGizmos()
     {
-        public int vertexA;
-        public int vertexB;
-        public float restLength;
-
-        public Edge(int a, int b, float length)
-        {
-            vertexA = a;
-            vertexB = b;
-            restLength = length;
-        }
+        // Visualize the detection sphere
+        Gizmos.color = isInAir ? Color.red : Color.green;
+        Gizmos.DrawWireSphere(transform.position, detectionRadius);
     }
 }

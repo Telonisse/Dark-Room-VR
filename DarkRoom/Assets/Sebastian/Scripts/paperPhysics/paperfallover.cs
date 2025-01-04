@@ -11,21 +11,22 @@ public class paperfallover : MonoBehaviour
     public float bendStiff = 1f;
     public float timeOfStiff = 1f;
 
+    [Tooltip("if left empty, will get gameobject components")]
+    public ConstantForce force;
+    public Cloth cloth;
+
     private float timer;
     private bool timeout;
-
-    private Cloth cloth;
+        
     private float tempStrech = 0f;
     private float tempBendStiff = 0f;
-
-    private ConstantForce force;
 
     private Coroutine timerCoroutine;
 
     private void Start()
     {
-        force = GetComponent<ConstantForce>();
-        cloth = GetComponent<Cloth>();
+        if (cloth == null) cloth = GetComponent<Cloth>();
+        if (force == null) force = GetComponent<ConstantForce>();        
         timeout = false;        
         force.enabled = false;
         tempStrech = cloth.stretchingStiffness;
@@ -33,26 +34,24 @@ public class paperfallover : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (!tagMask.Contains(other.gameObject))
+        if (tagMask.Contains(other.gameObject.tag))
         {
             Debug.Log($"Collided with a tagged object: {other.gameObject.tag}");
         }
-        else
+        else if (!tagMask.Contains(other.gameObject.tag))
         {
-            FallingOver();
-            Debug.Log($"Collided with a tagged object: {other.gameObject.tag}");
+            FallingOver();            
         }
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (!tagMask.Contains(collision.gameObject))
+        if (tagMask.Contains(collision.gameObject.tag))
         {
             Debug.Log($"Collided with a tagged object: {collision.gameObject.tag}");
         }
-        else
+        else if(!tagMask.Contains(collision.gameObject.tag))
         {
-            FallingOver();
-            Debug.Log($"Collided with a tagged object: {collision.gameObject.tag}");
+            FallingOver();            
         }
     }
 
