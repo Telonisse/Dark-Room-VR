@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
@@ -44,23 +43,25 @@ public class CodeLockOpen : MonoBehaviour
     private bool isUnlocked = false;
     private int currentCodeIndex = 0; // Tracks the progress of the entered code
     private List<GameObject> buttons = new List<GameObject>();
-
-    void Awake()
-    {
-        calendarCode = calendar.GetComponent<Calendar>();
-        code = calendarCode.GetCode();
-        addButtonsToList(childButtonName);
-        splitStringCode(code);
-    }
-
+    private float timer = 0f; // Timer counter
+    private bool hasExecuted = false;
     private void Update()
     {
+        if (!hasExecuted)
+        {
+            timer += Time.deltaTime;
+            if (timer >= 2f)
+            {
+                hasExecuted = true;
+                ExecuteAfterDelay();
+            }
+        }
         if (isUnlocked)
         {
             Invoke(nameof(EnableRigidbodyAndCollider), delayTime);
             foreach (XRGrabInteractable grab in doorNHingeGrab)
             {
-                grab.enabled = true; // Enable grabbing of doors and hinges
+                grab.enabled = true;
             }
         }
     }
@@ -174,5 +175,14 @@ public class CodeLockOpen : MonoBehaviour
         {
             collider.enabled = true;
         }
+    }
+
+    void ExecuteAfterDelay()
+    {
+        calendarCode = calendar.GetComponent<Calendar>();
+        code = calendarCode.GetCode();
+        addButtonsToList(childButtonName);
+        splitStringCode(code);
+        timer = 0f;
     }
 }
