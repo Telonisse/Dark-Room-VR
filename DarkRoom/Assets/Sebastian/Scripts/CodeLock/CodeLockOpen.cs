@@ -1,33 +1,31 @@
+using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class CodeLockOpen : MonoBehaviour
 {
-    [Tooltip("List of all the buttons")]
+    [Tooltip("Contains the name filter for child objects to be added to List of buttons")]
     [SerializeField]
-    public List<GameObject> buttons = new List<GameObject>();
+    public string childButtonName;
 
-    [Tooltip("calender that have the code")]
+    [Tooltip("Calendar that has the code")]
     [SerializeField]
-    public GameObject calender;
+    public GameObject calendar;
 
     private int c1 = 0, c2 = 0, c3 = 0, c4 = 0;
-    private Calendar calendcode;
+    private Calendar calendarCode;
     private string code;
 
-    [Tooltip("Dev mode to unlock and test code")]
+    [Tooltip("Delay time before gravity and collider enable after animation")]
     [SerializeField]
-    public bool code1 = false;
-    public bool code2 = false;
-    public bool code3 = false;
-    public bool code4 = false;
+    public float delayTime = 1f;
 
-    [Tooltip("Sound For Correct Code")]
+    [Tooltip("Sound for correct code")]
     [SerializeField]
     public AudioClip correctSound;
 
-    [Tooltip("Sound For wrong Code")]
+    [Tooltip("Sound for wrong code")]
     [SerializeField]
     public AudioClip wrongSound;
 
@@ -35,70 +33,146 @@ public class CodeLockOpen : MonoBehaviour
     [SerializeField]
     public Animator unlockAnimation;
 
-    [Tooltip("The Hock to remove collistions")]
+    [Tooltip("The hook to remove collisions")]
     [SerializeField]
-    public GameObject lockHock;
+    public GameObject lockHook;
 
-    private bool isUnLocked = false;
-    
-    void Start()
+    [Tooltip("List of XR Grab Interactables to enable after unlocking")]
+    [SerializeField]
+    public List<XRGrabInteractable> doorNHingeGrab = new List<XRGrabInteractable>();
+
+    private bool isUnlocked = false;
+    private int currentCodeIndex = 0; // Tracks the progress of the entered code
+    private List<GameObject> buttons = new List<GameObject>();
+
+    void Awake()
     {
-        calendcode = calender.GetComponent<Calendar>();
-        code = calendcode.GetCode();
+        calendarCode = calendar.GetComponent<Calendar>();
+        code = calendarCode.GetCode();
+        addButtonsToList(childButtonName);
         splitStringCode(code);
+    }
+
+    private void Update()
+    {
+        if (isUnlocked)
+        {
+            Invoke(nameof(EnableRigidbodyAndCollider), delayTime);
+            foreach (XRGrabInteractable grab in doorNHingeGrab)
+            {
+                grab.enabled = true; // Enable grabbing of doors and hinges
+            }
+        }
     }
 
     public void CodeButtonPressedUpdater(int number)
     {
-        if (number == c1) { code1 = true; }
-        if (number == c2) { code2 = true; }
-        if (number == c3) { code3 = true; }
-        if (number == c4) { code4 = true; }
-        if (number != c1 || number != c2 || number != c3 || number != c4) { return; }
+        // Check if the button pressed matches the next code value
+        if (currentCodeIndex < 4 && number == GetCodeDigit(currentCodeIndex))
+        {
+            currentCodeIndex++;
+            if (currentCodeIndex == 4) // Code is fully entered correctly
+            {
+                Unlock();
+            }
+        }
+        else
+        {
+            // Reset on incorrect input
+            PlayWrongCodeSound();
+            ResetCode();
+        }
     }
 
-    private bool correctCodeCheck()
+    private int GetCodeDigit(int index)
     {
-        if (code1 == true)
+        return index switch
         {
-            if (code2 == true)
-            {
-                if (code3 == true)
-                {
-                    if (code4 == true)
-                    {
-                        isUnLocked = true;
-                        PlayCorrectCodeSound();
-                        return true;
-                    }
-                    else { code1 = false; code2 = false; code3 = false; code4 = false; PlayWrongCodeSound(); return false; }
-                }
-                else { code1 = false; code2 = false; code3 = false; code4 = false; PlayWrongCodeSound(); return false; }
-            }
-            else { code1 = false; code2 = false; code3 = false; code4 = false; PlayWrongCodeSound(); return false; }
-        }        
-        return false; 
+            0 => c1,
+            1 => c2,
+            2 => c3,
+            3 => c4,
+            _ => -1
+        };
+    }
+
+    private void ResetCode()
+    {
+        currentCodeIndex = 0;
     }
 
     private void PlayWrongCodeSound()
     {
-        
+        if (wrongSound != null)
+        {
+            AudioSource.PlayClipAtPoint(wrongSound, transform.position);
+        }
     }
+
     private void PlayCorrectCodeSound()
     {
+        if (correctSound != null)
+        {
+            AudioSource.PlayClipAtPoint(correctSound, transform.position);
+        }
+    }
 
+    private void Unlock()
+    {
+        isUnlocked = true;
+
+        if (unlockAnimation != null)
+        {
+            unlockAnimation.SetTrigger("Unlock");
+        }
+
+        if (lockHook != null)
+        {
+            Destroy(lockHook); // Remove collision block
+        }
+
+        PlayCorrectCodeSound();
     }
 
     private void splitStringCode(string code)
     {
         if (string.IsNullOrEmpty(code) || code.Length < 4)
-        { return; }
-        if (code.Length > 4)
         {
-            char c1 = code[0];
-            char c2 = code[1];
-            char c3 = code[2];
-            char c4 = code[3];
+            Debug.LogError("Code is invalid or too short.");
+            return;
+        }
+
+        // Assign values to class-level variables
+        c1 = code[0] - '0';
+        c2 = code[1] - '0';
+        c3 = code[2] - '0';
+        c4 = code[3] - '0';
+    }
+
+    private void addButtonsToList(string refName)
+    {
+        // Ensure the GameObject has children
+        foreach (Transform child in transform)
+        {
+            if (child.name.Contains(refName)) // Check if the child's name matches the reference name
+            {
+                buttons.Add(child.gameObject); // Add the child GameObject to the buttons list
+            }
+        }
+    }
+
+    private void EnableRigidbodyAndCollider()
+    {
+        Rigidbody rb = gameObject.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.useGravity = true;
+        }
+
+        BoxCollider collider = gameObject.GetComponent<BoxCollider>();
+        if (collider != null)
+        {
+            collider.enabled = true;
         }
     }
 }
