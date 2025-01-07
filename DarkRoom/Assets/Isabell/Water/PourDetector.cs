@@ -17,6 +17,9 @@ public class PourDetector : MonoBehaviour
     private bool isPouring = false;
     private Stream currentStream = null;
 
+    [SerializeField] Transform bucketEdgeCenter;
+    [SerializeField] float bucketRadius = 0.5f;
+
     private void Start()
     {
         rend = liquid.GetComponent<Renderer>();
@@ -66,6 +69,16 @@ public class PourDetector : MonoBehaviour
         }
 
         EmptyLiquid();
+        Vector3 tiltDirection = GetTiltDirection();
+
+        //Vector3 edgePosition = CalculateEdgePosition(tiltDirection);
+
+        //edgePosition.y = 0.45f;
+
+        //origin.transform.localPosition = edgePosition;
+        Debug.Log(tiltDirection);
+        CalculateEdgePosition(tiltDirection);
+
     }
 
     private void EmptyLiquid()
@@ -128,5 +141,17 @@ public class PourDetector : MonoBehaviour
     {
         GameObject streamObject = Instantiate(streamPrefab, origin.position, Quaternion.identity, transform);
         return streamObject.GetComponent<Stream>();
+    }
+    private Vector3 GetTiltDirection()
+    {
+        return transform.up * -1;
+    }
+
+    private void CalculateEdgePosition(Vector3 tiltDirection)
+    {
+        tiltDirection.y = 0.45f;
+        tiltDirection.x = Mathf.Clamp(tiltDirection.x * -1f, 0f, bucketRadius);
+        tiltDirection.z = Mathf.Clamp(tiltDirection.z * -1f, 0f, bucketRadius);
+        origin.transform.localPosition = tiltDirection;
     }
 }
