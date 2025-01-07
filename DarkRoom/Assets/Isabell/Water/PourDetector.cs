@@ -71,12 +71,6 @@ public class PourDetector : MonoBehaviour
         EmptyLiquid();
         Vector3 tiltDirection = GetTiltDirection();
 
-        //Vector3 edgePosition = CalculateEdgePosition(tiltDirection);
-
-        //edgePosition.y = 0.45f;
-
-        //origin.transform.localPosition = edgePosition;
-        Debug.Log(tiltDirection);
         CalculateEdgePosition(tiltDirection);
 
     }
