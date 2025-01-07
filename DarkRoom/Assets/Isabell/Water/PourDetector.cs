@@ -150,8 +150,8 @@ public class PourDetector : MonoBehaviour
     private void CalculateEdgePosition(Vector3 tiltDirection)
     {
         tiltDirection.y = 0.45f;
-        tiltDirection.x = Mathf.Clamp(tiltDirection.x * -1f, 0f, bucketRadius);
-        tiltDirection.z = Mathf.Clamp(tiltDirection.z * -1f, 0f, bucketRadius);
+        tiltDirection.x = Mathf.Clamp(tiltDirection.x * -1f, -bucketRadius, bucketRadius);
+        tiltDirection.z = Mathf.Clamp(tiltDirection.z * -1f, -bucketRadius, bucketRadius);
         origin.transform.localPosition = tiltDirection;
     }
 }
