@@ -45,7 +45,7 @@ public class Lamp : MonoBehaviour
     {
         if (other.tag == "BulbBad")
         {
-            GetComponent<XRSocketInteractor>().socketActive = false;
+            //GetComponent<XRSocketInteractor>().socketActive = false;
         }
     }
 }

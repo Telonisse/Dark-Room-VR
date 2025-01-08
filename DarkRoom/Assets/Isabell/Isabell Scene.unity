@@ -4886,6 +4886,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2861022085170059801, guid: 93478d28038192c489dab354fe9e89b7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9396927
+      objectReference: {fileID: 0}
+    - target: {fileID: 2861022085170059801, guid: 93478d28038192c489dab354fe9e89b7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.3420201
+      objectReference: {fileID: 0}
+    - target: {fileID: 2861022085170059801, guid: 93478d28038192c489dab354fe9e89b7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -40
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630778297039690770, guid: 93478d28038192c489dab354fe9e89b7, type: 3}
+      propertyPath: m_RetainTransformParent
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7367856430605325672, guid: 93478d28038192c489dab354fe9e89b7, type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 1657341232}
     - target: {fileID: 8057367117997455802, guid: 93478d28038192c489dab354fe9e89b7, type: 3}
       propertyPath: m_Name
       value: Ceiling Lamp Good
@@ -6186,7 +6206,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1355246336254626447, guid: 4ad757703797f034dbb1d51935b90c23, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.5039
+      value: 1.011
       objectReference: {fileID: 0}
     - target: {fileID: 1355246336254626447, guid: 4ad757703797f034dbb1d51935b90c23, type: 3}
       propertyPath: m_LocalPosition.y
