@@ -63,4 +63,31 @@ public class PaperDampChange : MonoBehaviour
         cloth.damping = toDamp;
         cloth.stretchingStiffness = setStretch;
     }
+
+    private IEnumerator ChangeDampingOrigin(float fromDamp, float toDamp, float duration)
+    {
+        float elapsedTime = 0f;
+
+        // Smooth transition from the current damping to the target damping
+        while (elapsedTime < duration)
+        {
+            cloth.damping = Mathf.Lerp(fromDamp, toDamp, elapsedTime / duration);
+            cloth.stretchingStiffness = Mathf.Lerp(cloth.stretchingStiffness, originalStretch, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // Ensure the final damping is set exactly to the target
+        cloth.damping = originalDamp;
+        cloth.stretchingStiffness = originalStretch;
+    }
+
+    public void CallDampSetNew()
+    {
+        StartCoroutine(ChangeDamping(cloth.damping, setDamp, dampeningTime));
+    }
+    public void CallDampSetOrigin()
+    {
+        StartCoroutine(ChangeDampingOrigin(cloth.damping, originalDamp, dampeningTime));
+    }
 }

@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ObjectToPin : MonoBehaviour
@@ -21,7 +22,8 @@ public class ObjectToPin : MonoBehaviour
                 rb.constraints = RigidbodyConstraints.FreezeAll;
 
                 isPinned = true;
-
+                if (collision.gameObject.GetComponent<Cloth>() != null)
+                { collision.gameObject.GetComponent<Cloth>().enabled = false; }
                 GetAllChildrenRigBody getAllChildren = collision.gameObject.GetComponent<GetAllChildrenRigBody>();
                 if (collision.gameObject.GetComponent<GetAllChildrenRigBody>() != null)
                 {
@@ -29,6 +31,12 @@ public class ObjectToPin : MonoBehaviour
                     getAllChildren.ToggleChildrenRBSettings(1, false);
                 }
                 Debug.Log($"{objectThatWillGetPin.name} has been pinned.OnCollisionEnter");
+                if (collision.gameObject.GetComponent<PaperDampChange>() != null)
+                {
+                    PaperDampChange pdc = collision.gameObject.GetComponent<PaperDampChange>();
+
+                    pdc.CallDampSetNew();
+                }
             }
 
         }
@@ -46,6 +54,8 @@ public class ObjectToPin : MonoBehaviour
                 rb.constraints = RigidbodyConstraints.None;
 
                 isPinned = false;
+                if (collision.gameObject.GetComponent<Cloth>() != null)
+                { collision.gameObject.GetComponent<Cloth>().enabled = true; }
 
                 GetAllChildrenRigBody getAllChildren = collision.gameObject.GetComponent<GetAllChildrenRigBody>();
                 if (collision.gameObject.GetComponent<GetAllChildrenRigBody>() != null)
@@ -54,6 +64,12 @@ public class ObjectToPin : MonoBehaviour
                     getAllChildren.ToggleChildrenRBSettings(1, true);
                 }
                 Debug.Log($"{objectThatWillGetPin.name} has been unpinned.OnCollisionExit");
+                if (collision.gameObject.GetComponent<PaperDampChange>() != null)
+                {
+                    PaperDampChange pdc = collision.gameObject.GetComponent<PaperDampChange>();
+
+                    pdc.CallDampSetOrigin();
+                }
             }
 
         }
@@ -69,7 +85,8 @@ public class ObjectToPin : MonoBehaviour
             rb.constraints = RigidbodyConstraints.FreezeAll;
 
             isPinned = true;
-
+            if (other.gameObject.GetComponent<Cloth>() != null)
+            { other.gameObject.GetComponent<Cloth>().enabled = false; }
             GetAllChildrenRigBody getAllChildren = other.gameObject.GetComponent<GetAllChildrenRigBody>();
             if (other.gameObject.GetComponent<GetAllChildrenRigBody>() != null)
             {
@@ -77,6 +94,12 @@ public class ObjectToPin : MonoBehaviour
                 getAllChildren.ToggleChildrenRBSettings(1, false);
             }
             Debug.Log($"{objectThatWillGetPin.name} has been pinned.OnTriggerEnter");
+            if (other.gameObject.GetComponent<PaperDampChange>() != null)
+            {
+                PaperDampChange pdc = other.gameObject.GetComponent<PaperDampChange>();
+
+                pdc.CallDampSetNew();
+            }
         }
 
     }
@@ -93,7 +116,8 @@ public class ObjectToPin : MonoBehaviour
                 rb.constraints = RigidbodyConstraints.None;
 
                 isPinned = false;
-
+                if (other.gameObject.GetComponent<Cloth>() != null)
+                { other.gameObject.GetComponent<Cloth>().enabled = true; }
                 GetAllChildrenRigBody getAllChildren = other.gameObject.GetComponent<GetAllChildrenRigBody>();
                 if (other.gameObject.GetComponent<GetAllChildrenRigBody>() != null)
                 {
@@ -101,6 +125,12 @@ public class ObjectToPin : MonoBehaviour
                     getAllChildren.ToggleChildrenRBSettings(1, true);
                 }
                 Debug.Log($"{objectThatWillGetPin.name} has been unpinned.OnTriggerExit");
+                if (other.gameObject.GetComponent<PaperDampChange>() != null)
+                {
+                    PaperDampChange pdc = other.gameObject.GetComponent<PaperDampChange>();
+
+                    pdc.CallDampSetOrigin();
+                }
             }
 
         }
