@@ -107,7 +107,7 @@ MonoBehaviour:
   pourThreshhold: 45
   origin: {fileID: 8506795204901373695}
   streamPrefab: {fileID: 3787101131635501966, guid: 6547460e1e4d9e640b47203c362069fc, type: 3}
-  collisionTag: Respawn
+  collisionTag: Fire
   liquid: {fileID: 6342972537101759555}
   reduceRate: 0.2
   bucketEdgeCenter: {fileID: 1910367602623475504}

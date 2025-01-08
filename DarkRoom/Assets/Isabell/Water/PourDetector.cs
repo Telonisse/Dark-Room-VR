@@ -20,6 +20,8 @@ public class PourDetector : MonoBehaviour
     [SerializeField] Transform bucketEdgeCenter;
     [SerializeField] float bucketRadius = 0.5f;
 
+    private bool hora = false;
+
     private void Start()
     {
         rend = liquid.GetComponent<Renderer>();
@@ -57,8 +59,9 @@ public class PourDetector : MonoBehaviour
         {
             if (hit.collider.CompareTag(collisionTag))
             {
-                if (pourCheck == true)
+                if (pourCheck == true && hora == false)
                 {
+                    hora = true;
                     hit.transform.GetComponent<BurnUpObjects>().WaterOn();
                 }
             }

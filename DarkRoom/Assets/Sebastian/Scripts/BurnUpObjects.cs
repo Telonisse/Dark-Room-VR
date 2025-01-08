@@ -44,6 +44,7 @@ public class BurnUpObjects : SerialDataTransciever
 
     void Start()
     {
+        TurnOnLamp();
         // Warning system if forgor
         if (destroyableObjects == null || destroyableObjects.Count == 0)
         {
@@ -61,17 +62,35 @@ public class BurnUpObjects : SerialDataTransciever
         {
             Debug.LogWarning("The 'referenceCollider' is not assigned. Assign a Collider in the Inspector.");
         }
+        
     }
 
-    private void Update()
+    //private void Update()
+    //{
+    //    if (lampOn == false && communicator.PortOpen() && tries < 5)
+    //    {
+    //        tries++;
+    //        SendData("turnonled");
+    //        if (tries == 5)
+    //        {
+    //            lampOn = true;
+    //        }
+    //    }
+    //}
+
+    private void TurnOnLamp()
     {
-        if (lampOn == false && communicator.PortOpen() && tries < 5)
+        float timer = 0f;
+        bool timerActive = true;
+
+        while (timerActive)
         {
-            tries++;
-            SendData("turnonled");
-            if (tries == 5)
+            Debug.Log("Timer on");
+            timer += Time.deltaTime; // Increment the timer
+            if (timer >= 5f) // Check if 2 seconds have passed
             {
-                lampOn = true;
+                timerActive = false;
+                SendData("turnonled");
             }
         }
     }
@@ -148,7 +167,6 @@ public class BurnUpObjects : SerialDataTransciever
 
     public void WaterOn()
     {
-        SendData("turnoffled");
         smokelit.Stop();
         fire.Stop();
         pointLight.gameObject.SetActive(false);
@@ -157,13 +175,14 @@ public class BurnUpObjects : SerialDataTransciever
         float timer = 0f;
         bool timerActive = true;
 
-        if (timerActive)
+        while (timerActive)
         {
             timer += Time.deltaTime; // Increment the timer
             if (timer >= 2f) // Check if 2 seconds have passed
             {
                 timerActive = false;
                 afterSmoke.Play();
+                SendData("turnoffled");
             }
         }
     }
