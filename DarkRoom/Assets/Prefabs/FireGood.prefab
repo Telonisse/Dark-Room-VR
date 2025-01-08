@@ -10573,7 +10573,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5830458941206605217}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.204, y: -1.361, z: 1.102}
   m_LocalScale: {x: 0.71514404, y: 0.5274187, z: 0.71514404}
   m_ConstrainProportionsScale: 0
@@ -10588,6 +10588,7 @@ Transform:
   - {fileID: 8016961239660082390}
   - {fileID: 743829849634356051}
   - {fileID: 9101047820239750101}
+  - {fileID: 6848364345328555756}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5966016594464579106
@@ -10603,7 +10604,7 @@ GameObject:
   - component: {fileID: 7157965689888989450}
   m_Layer: 0
   m_Name: TriggerForEvent
-  m_TagString: Untagged
+  m_TagString: Fire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10672,6 +10673,10 @@ MonoBehaviour:
   referenceCollider: {fileID: 1832766157858601083}
   effectToPlay: {fileID: 2966670994167377530}
   burningTimeDelay: 2
+  smokelit: {fileID: 7293690099878780092}
+  fire: {fileID: 4666821917484094928}
+  pointLight: {fileID: 2014596485449260626}
+  smokeOnWater: {fileID: 5659971098758010846}
 --- !u!1 &6539572547414436155
 GameObject:
   m_ObjectHideFlags: 0
@@ -15805,3 +15810,74 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!1001 &5323555584553847991
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7499461215409475926}
+    m_Modifications:
+    - target: {fileID: 535172032234773353, guid: c813a095feebdcb449e9fb15cc984639, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1651508861491960411, guid: c813a095feebdcb449e9fb15cc984639, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.054
+      objectReference: {fileID: 0}
+    - target: {fileID: 1651508861491960411, guid: c813a095feebdcb449e9fb15cc984639, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.238
+      objectReference: {fileID: 0}
+    - target: {fileID: 1651508861491960411, guid: c813a095feebdcb449e9fb15cc984639, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.431
+      objectReference: {fileID: 0}
+    - target: {fileID: 1651508861491960411, guid: c813a095feebdcb449e9fb15cc984639, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1651508861491960411, guid: c813a095feebdcb449e9fb15cc984639, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1651508861491960411, guid: c813a095feebdcb449e9fb15cc984639, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1651508861491960411, guid: c813a095feebdcb449e9fb15cc984639, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1651508861491960411, guid: c813a095feebdcb449e9fb15cc984639, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1651508861491960411, guid: c813a095feebdcb449e9fb15cc984639, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1651508861491960411, guid: c813a095feebdcb449e9fb15cc984639, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3481814759165735293, guid: c813a095feebdcb449e9fb15cc984639, type: 3}
+      propertyPath: m_Name
+      value: Ef_SmokeWhenWaterOn
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c813a095feebdcb449e9fb15cc984639, type: 3}
+--- !u!198 &5659971098758010846 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 535172032234773353, guid: c813a095feebdcb449e9fb15cc984639, type: 3}
+  m_PrefabInstance: {fileID: 5323555584553847991}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6848364345328555756 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1651508861491960411, guid: c813a095feebdcb449e9fb15cc984639, type: 3}
+  m_PrefabInstance: {fileID: 5323555584553847991}
+  m_PrefabAsset: {fileID: 0}

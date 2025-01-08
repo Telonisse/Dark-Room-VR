@@ -5,11 +5,11 @@ public class ArduinoLamp : SerialDataTransciever
 {
     public void TurnOnLed()
     {
-        SendData("TurnOnLed");
+        SendData("turnonled");
     }
 
     public void TurnOffLed()
     {
-        SendData("TurnOffLed");
+        SendData("turnoffled");
     }
 }

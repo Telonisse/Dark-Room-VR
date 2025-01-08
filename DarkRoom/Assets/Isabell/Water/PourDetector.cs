@@ -59,7 +59,7 @@ public class PourDetector : MonoBehaviour
             {
                 if (pourCheck == true)
                 {
-                    Debug.Log("Pouring on " + hit.transform.name);
+                    hit.transform.GetComponent<BurnUpObjects>().WaterOn();
                 }
             }
         }

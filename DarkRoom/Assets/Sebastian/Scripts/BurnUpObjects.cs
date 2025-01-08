@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Ja;
 
-public class BurnUpObjects : MonoBehaviour
+public class BurnUpObjects : SerialDataTransciever
 {
     [Tooltip("List of objects that will be destroyed")]
     [SerializeField]
@@ -27,13 +28,22 @@ public class BurnUpObjects : MonoBehaviour
     [SerializeField]
     public float burningTimeDelay = 2f;
 
+    [SerializeField] ParticleSystem smokelit;
+    [SerializeField] ParticleSystem fire;
+    [SerializeField] Light pointLight;
+    [SerializeField] ParticleSystem smokeOnWater;
+    [SerializeField] ParticleSystem afterSmoke;
+
     private Vector3 exchangeTransform;
     private Quaternion exchangeRotation;
 
     private bool specialDestroyed = false;
 
+    private bool lampOn = false;
+    private int tries = 0;
+
     void Start()
-    {        
+    {
         // Warning system if forgor
         if (destroyableObjects == null || destroyableObjects.Count == 0)
         {
@@ -50,7 +60,20 @@ public class BurnUpObjects : MonoBehaviour
         if (referenceCollider == null)
         {
             Debug.LogWarning("The 'referenceCollider' is not assigned. Assign a Collider in the Inspector.");
-        }        
+        }
+    }
+
+    private void Update()
+    {
+        if (lampOn == false && communicator.PortOpen() && tries < 5)
+        {
+            tries++;
+            SendData("turnonled");
+            if (tries == 5)
+            {
+                lampOn = true;
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -121,5 +144,27 @@ public class BurnUpObjects : MonoBehaviour
 
         float scaleFactor = Mathf.Min(scaleX, scaleY, scaleZ);
         obj.transform.localScale *= scaleFactor;
+    }
+
+    public void WaterOn()
+    {
+        SendData("turnoffled");
+        smokelit.Stop();
+        fire.Stop();
+        pointLight.gameObject.SetActive(false);
+        smokeOnWater.Play();
+
+        float timer = 0f;
+        bool timerActive = true;
+
+        if (timerActive)
+        {
+            timer += Time.deltaTime; // Increment the timer
+            if (timer >= 2f) // Check if 2 seconds have passed
+            {
+                timerActive = false;
+                afterSmoke.Play();
+            }
+        }
     }
 }

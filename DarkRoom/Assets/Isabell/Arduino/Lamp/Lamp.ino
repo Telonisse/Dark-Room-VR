@@ -34,21 +34,21 @@ void DoCommand()
   else if(command == F("turnoffled"))
   {
     digitalWrite(relay, LOW);
-  }  
+  }
 }
 
 void ProcessInput()
 {
   isCommandRead = false;
   command = F("");
-  
+
   if(Serial.available() > 0)
     isCommandRead = true;
-    
+
   while(Serial.available() > 0)
   {
     command = Serial.readString();
-    
+
 #ifdef DEBUG
     Serial.print(F("//"));
     Serial.println(command);

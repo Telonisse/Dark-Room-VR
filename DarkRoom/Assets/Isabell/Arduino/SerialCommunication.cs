@@ -180,6 +180,18 @@ namespace Ja
                 Debug.Log("Port opened successfully");
         }
 
+        public bool PortOpen()
+        {
+            if (port.IsOpen)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
 
         /// <summary>
         /// Discards incoming data in intervals
