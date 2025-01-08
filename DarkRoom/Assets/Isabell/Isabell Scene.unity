@@ -4886,21 +4886,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2861022085170059801, guid: 93478d28038192c489dab354fe9e89b7, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9396927
+    - target: {fileID: 3094063641364080358, guid: 93478d28038192c489dab354fe9e89b7, type: 3}
+      propertyPath: m_Constraints
+      value: 94
       objectReference: {fileID: 0}
-    - target: {fileID: 2861022085170059801, guid: 93478d28038192c489dab354fe9e89b7, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.3420201
-      objectReference: {fileID: 0}
-    - target: {fileID: 2861022085170059801, guid: 93478d28038192c489dab354fe9e89b7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -40
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630778297039690770, guid: 93478d28038192c489dab354fe9e89b7, type: 3}
-      propertyPath: m_RetainTransformParent
-      value: 1
+    - target: {fileID: 3094063641364080358, guid: 93478d28038192c489dab354fe9e89b7, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7367856430605325672, guid: 93478d28038192c489dab354fe9e89b7, type: 3}
       propertyPath: m_InteractionManager
