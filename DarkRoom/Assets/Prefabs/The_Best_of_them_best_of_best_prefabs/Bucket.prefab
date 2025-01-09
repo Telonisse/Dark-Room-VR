@@ -111,7 +111,7 @@ MonoBehaviour:
   liquid: {fileID: 6342972537101759555}
   reduceRate: 0.2
   bucketEdgeCenter: {fileID: 1910367602623475504}
-  bucketRadius: 0.2263046
+  bucketRadius: 0.4
 --- !u!65 &5629959370811209447
 BoxCollider:
   m_ObjectHideFlags: 0

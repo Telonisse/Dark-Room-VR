@@ -8,7 +8,12 @@ public class Keyhole : MonoBehaviour
     [SerializeField] bool unlocked = false;
     [SerializeField] GameObject door;
 
+    [SerializeField] AudioSource keyInsert;
+    [SerializeField] AudioSource keyTurn;
+
     private Quaternion rotation;
+
+    private bool audioPlayed = false;
 
     private void Start()
     {
@@ -22,15 +27,20 @@ public class Keyhole : MonoBehaviour
         if (other.tag == keyTag)
         {
             rotation = other.transform.rotation;
+            keyInsert.Play();
         }
     }
     private void OnTriggerStay(Collider other)
     {
         if (other.tag == keyTag)
         {
+            if (Mathf.DeltaAngle(other.transform.rotation.eulerAngles.z, rotation.eulerAngles.z) <= -5 && audioPlayed == false)
+            {
+                audioPlayed = true;
+                keyTurn.Play();
+            }
             if (Mathf.DeltaAngle(other.transform.rotation.eulerAngles.z , rotation.eulerAngles.z) <= -60)
             {
-                //transform.rotation = other.transform.rotation;
                 unlocked = true;
             }
             if (unlocked == true)
@@ -43,14 +53,16 @@ public class Keyhole : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        audioPlayed = false;
+    }
+
     private void Update()
     {
         if (unlocked == true)
         {
             Debug.Log("Unlocking");
-            //door.transform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-            //door.transform.GetComponent<XRGrabInteractable>().enabled = true;
-            //GetComponent<XRSocketInteractor>().enabled = true;
         }
     }
 

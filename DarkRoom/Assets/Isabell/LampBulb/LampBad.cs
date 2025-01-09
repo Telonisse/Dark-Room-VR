@@ -11,7 +11,6 @@ public class LampBad : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(Mathf.DeltaAngle(startRot.y, transform.rotation.y));
         if (Mathf.DeltaAngle(startRot.eulerAngles.y, transform.rotation.eulerAngles.y) <= -40)
         {
             Debug.Log("remove");

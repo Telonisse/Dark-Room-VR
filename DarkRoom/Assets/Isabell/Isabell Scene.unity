@@ -557,7 +557,7 @@ Transform:
   m_GameObject: {fileID: 203015402}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.228, y: 0.451, z: 0.283}
+  m_LocalPosition: {x: 1.228, y: 0.451, z: 0.38}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1406,6 +1406,8 @@ MonoBehaviour:
   keyTag: Key
   unlocked: 0
   door: {fileID: 0}
+  keyInsert: {fileID: 0}
+  keyTurn: {fileID: 0}
 --- !u!65 &397260054
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2545,7 +2547,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 467365502157935860, guid: fe23ef70dd9afe34485e97d8453a5b1a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.355
+      value: 0.17
       objectReference: {fileID: 0}
     - target: {fileID: 467365502157935860, guid: fe23ef70dd9afe34485e97d8453a5b1a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2553,7 +2555,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 467365502157935860, guid: fe23ef70dd9afe34485e97d8453a5b1a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.268
+      value: 0.557
       objectReference: {fileID: 0}
     - target: {fileID: 467365502157935860, guid: fe23ef70dd9afe34485e97d8453a5b1a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6557,7 +6559,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8493286723818395052, guid: b4b19e3ea740499439513e595fc7ba5b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.107
+      value: 0.204
       objectReference: {fileID: 0}
     - target: {fileID: 8493286723818395052, guid: b4b19e3ea740499439513e595fc7ba5b, type: 3}
       propertyPath: m_LocalRotation.w

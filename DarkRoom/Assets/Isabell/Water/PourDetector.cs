@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -17,7 +18,6 @@ public class PourDetector : MonoBehaviour
     private bool isPouring = false;
     private Stream currentStream = null;
 
-    [SerializeField] Transform bucketEdgeCenter;
     [SerializeField] float bucketRadius = 0.5f;
 
     private bool hora = false;
@@ -30,6 +30,7 @@ public class PourDetector : MonoBehaviour
 
     private void Update()
     {
+        CalculateEdgePosition();
         bool pourCheck = CalculatePourAngle() < pourThreshhold && rend.material.GetFloat("_Fill") > -0.5f;
 
         if (isPouring != pourCheck)
@@ -72,10 +73,6 @@ public class PourDetector : MonoBehaviour
         }
 
         EmptyLiquid();
-        Vector3 tiltDirection = GetTiltDirection();
-
-        CalculateEdgePosition(tiltDirection);
-
     }
 
     private void EmptyLiquid()
@@ -139,16 +136,17 @@ public class PourDetector : MonoBehaviour
         GameObject streamObject = Instantiate(streamPrefab, origin.position, Quaternion.identity, transform);
         return streamObject.GetComponent<Stream>();
     }
-    private Vector3 GetTiltDirection()
-    {
-        return transform.up * -1;
-    }
 
-    private void CalculateEdgePosition(Vector3 tiltDirection)
+    private void CalculateEdgePosition()
     {
-        tiltDirection.y = 0.45f;
-        tiltDirection.x = Mathf.Clamp(tiltDirection.x * -1f, -bucketRadius, bucketRadius);
-        tiltDirection.z = Mathf.Clamp(tiltDirection.z * -1f, -bucketRadius, bucketRadius);
-        origin.transform.localPosition = tiltDirection;
+        Quaternion rotation = this.transform.rotation;
+
+        Vector3 direction = rotation * Vector3.up;
+        direction = direction.normalized;
+
+        Vector3 newPosition = direction * bucketRadius;
+        newPosition.y = 0.45f;
+
+        origin.localPosition = newPosition;
     }
 }
