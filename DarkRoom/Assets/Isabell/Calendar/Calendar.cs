@@ -12,7 +12,7 @@ public class Calendar : MonoBehaviour
     public int chosenDay;
 
     [SerializeField] string code;
-    void Start()
+    void Awake()
     {
         chosenMonth = Random.Range(0, months.Length);
         for (int i = 0; i < months.Length; i++)

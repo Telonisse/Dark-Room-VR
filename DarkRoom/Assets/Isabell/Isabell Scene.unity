@@ -4406,63 +4406,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &2047446948 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2530186771023032596, guid: 93478d28038192c489dab354fe9e89b7, type: 3}
-  m_PrefabInstance: {fileID: 1330846281927798475}
-  m_PrefabAsset: {fileID: 0}
---- !u!59 &2047446952
-HingeJoint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2047446948}
-  serializedVersion: 3
-  m_ConnectedBody: {fileID: 0}
-  m_ConnectedArticulationBody: {fileID: 0}
-  m_Anchor: {x: 0, y: 0, z: 0}
-  m_Axis: {x: 0, y: 1, z: 1}
-  m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
-  m_UseSpring: 0
-  m_Spring:
-    spring: 0
-    damper: 0
-    targetPosition: 0
-  m_UseMotor: 0
-  m_Motor:
-    targetVelocity: 0
-    force: 0
-    freeSpin: 0
-  m_UseLimits: 0
-  m_ExtendedLimits: 0
-  m_UseAcceleration: 0
-  m_Limits:
-    min: 0
-    max: 0
-    bounciness: 0
-    bounceMinVelocity: 0.2
-    contactDistance: 0
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_EnableCollision: 0
-  m_EnablePreprocessing: 1
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
---- !u!114 &2047446953
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2047446948}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1894ec4943ac404a9dc07f2b4b6c6e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startRot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &2076672815
 GameObject:
   m_ObjectHideFlags: 0
@@ -4945,30 +4888,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1142336525661141326, guid: 93478d28038192c489dab354fe9e89b7, type: 3}
-      propertyPath: m_Center.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3094063641364080358, guid: 93478d28038192c489dab354fe9e89b7, type: 3}
-      propertyPath: m_Constraints
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3094063641364080358, guid: 93478d28038192c489dab354fe9e89b7, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630778297039690770, guid: 93478d28038192c489dab354fe9e89b7, type: 3}
-      propertyPath: m_MovementType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7367856430605325672, guid: 93478d28038192c489dab354fe9e89b7, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7367856430605325672, guid: 93478d28038192c489dab354fe9e89b7, type: 3}
-      propertyPath: m_InteractionManager
-      value: 
-      objectReference: {fileID: 1657341232}
     - target: {fileID: 8057367117997455802, guid: 93478d28038192c489dab354fe9e89b7, type: 3}
       propertyPath: m_Name
       value: Ceiling Lamp Good
@@ -5013,17 +4932,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7367856430605325672, guid: 93478d28038192c489dab354fe9e89b7, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2530186771023032596, guid: 93478d28038192c489dab354fe9e89b7, type: 3}
-      insertIndex: 2
-      addedObject: {fileID: 2047446953}
-    - targetCorrespondingSourceObject: {fileID: 2530186771023032596, guid: 93478d28038192c489dab354fe9e89b7, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2047446952}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93478d28038192c489dab354fe9e89b7, type: 3}
 --- !u!33 &1342706763974344237
 MeshFilter:
@@ -6217,6 +6129,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 105838111165844002, guid: 40d8ea827aa2b744abf59c69cf5d1b28, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4283521400711168645, guid: 40d8ea827aa2b744abf59c69cf5d1b28, type: 3}
       propertyPath: m_Name
       value: Calendar Good
