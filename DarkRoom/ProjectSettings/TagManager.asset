@@ -11,6 +11,9 @@ TagManager:
   - Pinable
   - Ground
   - Fire
+  - Play
+  - Quit
+  - Credits
   layers:
   - Default
   - TransparentFX
