@@ -6,8 +6,8 @@ public class DistanceJoint3D : MonoBehaviour
     public Transform ConnectedRigidbody;
     public bool DetermineDistanceOnStart = true;
     public float Distance;
-    public float Spring = 0.1f;
-    public float Damper = 5f;
+    public float Spring = 0.01f;
+    public float Damper = 20f;
 
     protected Rigidbody Rigidbody;
 
