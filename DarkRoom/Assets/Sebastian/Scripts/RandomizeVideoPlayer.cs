@@ -10,7 +10,11 @@ public class RandomizeVideoPlayer : MonoBehaviour
 
     [Tooltip("If left empty, it takes this object's Video Player")]
     [SerializeField]
-    private VideoPlayer videoplay;
+    private VideoPlayer videoplay; 
+
+    [Tooltip("If left empty, it takes this object's AudioSource")]
+    [SerializeField]
+    private AudioSource videoSoundSource;
 
     [Tooltip("The turned-off screen")]
     [SerializeField]
@@ -20,11 +24,20 @@ public class RandomizeVideoPlayer : MonoBehaviour
 
     void Start()
     {
-        // Ensure the VideoPlayer is initialized
+        // Initialize VideoPlayer and AudioSource
         if (videoplay == null)
         {
             videoplay = gameObject.AddComponent<VideoPlayer>();
         }
+
+        if (videoSoundSource == null)
+        {
+            videoSoundSource = gameObject.AddComponent<AudioSource>();
+        }
+
+        // Configure VideoPlayer audio output
+        videoplay.audioOutputMode = VideoAudioOutputMode.AudioSource;
+        videoplay.SetTargetAudioSource(0, videoSoundSource);
 
         // Add the loopPointReached event listener
         videoplay.loopPointReached += OnVideoStopped;
@@ -59,6 +72,7 @@ public class RandomizeVideoPlayer : MonoBehaviour
     {
         // Assign the new video clip and play
         videoplay.clip = listOfVideos[index];
+
         videoplay.Play();
 
         // Ensure the black screen is turned off
