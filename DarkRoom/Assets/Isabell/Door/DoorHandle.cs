@@ -27,16 +27,30 @@ public class DoorHandle : MonoBehaviour
     [SerializeField] GameObject door;
     [SerializeField] float rotateCheck;
 
+    [SerializeField] AudioSource soundLocked;
+    [SerializeField] AudioSource soundUnlocked;
+    private bool audioPlayed = false;
+
     private void Update()
     {
         //Debug.Log(transform.rotation.eulerAngles.x);
-        if (transform.rotation.eulerAngles.x < rotateCheck && transform.rotation.eulerAngles.x > 10 && door.GetComponentInChildren<Keyhole>().Unlocked() == true)
+        if (transform.rotation.eulerAngles.x < rotateCheck && transform.rotation.eulerAngles.x > 10 && door.GetComponentInChildren<Keyhole>().Unlocked() == true && GetComponent<HingeJoint>() != null)
         {
             Destroy(this.GetComponent<HingeJoint>());
+            soundUnlocked.Play();
             Destroy(this.GetComponent<XRGrabInteractable>());
             Destroy(this.GetComponent<Rigidbody>());
             door.transform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
             door.transform.GetComponent<XRGrabInteractable>().enabled = true;
+        }
+        if (transform.rotation.eulerAngles.x < rotateCheck && transform.rotation.eulerAngles.x > 10 && door.GetComponentInChildren<Keyhole>().Unlocked() == false && audioPlayed == false)
+        {
+            soundLocked.Play();
+            audioPlayed = true;
+        }
+        else
+        {
+            audioPlayed = false;
         }
     }
 
