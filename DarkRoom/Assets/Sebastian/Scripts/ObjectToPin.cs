@@ -93,7 +93,7 @@ public class ObjectToPin : MonoBehaviour
                 getAllChildren.ToggleChildrenRBSettings(0, true);
                 getAllChildren.ToggleChildrenRBSettings(1, false);
             }
-            Debug.Log($"{objectThatWillGetPin.name} has been pinned.OnTriggerEnter");
+            
             if (other.gameObject.GetComponent<PaperDampChange>() != null)
             {
                 PaperDampChange pdc = other.gameObject.GetComponent<PaperDampChange>();
@@ -124,7 +124,6 @@ public class ObjectToPin : MonoBehaviour
                     getAllChildren.ToggleChildrenRBSettings(0, false);
                     getAllChildren.ToggleChildrenRBSettings(1, true);
                 }
-                Debug.Log($"{objectThatWillGetPin.name} has been unpinned.OnTriggerExit");
                 if (other.gameObject.GetComponent<PaperDampChange>() != null)
                 {
                     PaperDampChange pdc = other.gameObject.GetComponent<PaperDampChange>();

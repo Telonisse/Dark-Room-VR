@@ -317,6 +317,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonNumber: 1
   theCodeLock: {fileID: 5499985780527169169}
+  maxSelectionDistance: 0.3
 --- !u!1 &1488771098755304394
 GameObject:
   m_ObjectHideFlags: 0
@@ -732,6 +733,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonNumber: 1
   theCodeLock: {fileID: 5499985780527169169}
+  maxSelectionDistance: 0.3
 --- !u!1 &3763948707687676323
 GameObject:
   m_ObjectHideFlags: 0
@@ -1016,6 +1018,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonNumber: 1
   theCodeLock: {fileID: 5499985780527169169}
+  maxSelectionDistance: 0.3
 --- !u!1 &4360980165573415887
 GameObject:
   m_ObjectHideFlags: 0
@@ -1045,7 +1048,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4360980165573415887}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: 0.000000021073431, z: -0.00000010536711, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1452,6 +1455,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonNumber: 1
   theCodeLock: {fileID: 5499985780527169169}
+  maxSelectionDistance: 0.3
 --- !u!1 &5028033888341199681
 GameObject:
   m_ObjectHideFlags: 0
@@ -1736,6 +1740,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonNumber: 1
   theCodeLock: {fileID: 5499985780527169169}
+  maxSelectionDistance: 0.3
 --- !u!1 &5352397639629924713
 GameObject:
   m_ObjectHideFlags: 0
@@ -2073,6 +2078,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonNumber: 1
   theCodeLock: {fileID: 5499985780527169169}
+  maxSelectionDistance: 0.3
 --- !u!1 &5499985780527169169
 GameObject:
   m_ObjectHideFlags: 0
@@ -2120,19 +2126,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef4f796da53b80045a109a53b89c64d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttons: []
-  c1: 0
-  c2: 0
-  c3: 0
-  c4: 0
-  code1: 0
-  code2: 0
-  code3: 0
-  code4: 0
+  childButtonName: 
+  calendar: {fileID: 0}
+  delayTime: 1
   correctSound: {fileID: 0}
   wrongSound: {fileID: 0}
   unlockAnimation: {fileID: 0}
-  lockHock: {fileID: 0}
+  lockHook: {fileID: 0}
+  doorNHingeGrab: []
+  creativeUnlock: 0
 --- !u!95 &4860831241400217285
 Animator:
   serializedVersion: 7
@@ -2466,6 +2468,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonNumber: 1
   theCodeLock: {fileID: 5499985780527169169}
+  maxSelectionDistance: 0.3
 --- !u!1 &6549074220368986962
 GameObject:
   m_ObjectHideFlags: 0
@@ -2807,6 +2810,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonNumber: 1
   theCodeLock: {fileID: 5499985780527169169}
+  maxSelectionDistance: 0.3
 --- !u!1 &8169596299757510584
 GameObject:
   m_ObjectHideFlags: 0
@@ -3370,6 +3374,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonNumber: 1
   theCodeLock: {fileID: 5499985780527169169}
+  maxSelectionDistance: 0.3
 --- !u!1 &8449044190396287858
 GameObject:
   m_ObjectHideFlags: 0
@@ -3534,6 +3539,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2657618728273283143}
   - {fileID: 5274800987176181879}
   - {fileID: 2253862446408357175}
   - {fileID: 8855386683828840406}
@@ -3543,7 +3549,6 @@ Transform:
   - {fileID: 3982207745378319335}
   - {fileID: 1583169723420183518}
   - {fileID: 7917906567237058591}
-  - {fileID: 2657618728273283143}
   m_Father: {fileID: 7828035220497476173}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6932365376671066817

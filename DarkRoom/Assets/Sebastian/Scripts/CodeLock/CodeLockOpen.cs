@@ -40,11 +40,19 @@ public class CodeLockOpen : MonoBehaviour
     [SerializeField]
     public List<XRGrabInteractable> doorNHingeGrab = new List<XRGrabInteractable>();
 
+    public bool creativeUnlock = false;
+
     private bool isUnlocked = false;
     private int currentCodeIndex = 0; // Tracks the progress of the entered code
     private List<GameObject> buttons = new List<GameObject>();
     private float timer = 0f; // Timer counter
     private bool hasExecuted = false;
+    private Rigidbody rb;
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
     private void Update()
     {
         if (!hasExecuted)
@@ -63,6 +71,11 @@ public class CodeLockOpen : MonoBehaviour
             {
                 grab.enabled = true;
             }
+        }
+        if (creativeUnlock)
+        {
+            ToggleCreativeLock();
+            creativeUnlock = false;
         }
     }
 
@@ -124,12 +137,17 @@ public class CodeLockOpen : MonoBehaviour
 
         if (unlockAnimation != null)
         {
-            unlockAnimation.SetTrigger("Unlock");
+            unlockAnimation.SetTrigger("Unlocked");
         }
 
         if (lockHook != null)
         {
-            Destroy(lockHook); // Remove collision block
+            foreach (BoxCollider coll in lockHook.GetComponentsInChildren<BoxCollider>())
+            {
+                coll.enabled = false;
+            }
+
+            rb.useGravity = true;
         }
 
         PlayCorrectCodeSound();
@@ -185,4 +203,10 @@ public class CodeLockOpen : MonoBehaviour
         splitStringCode(code);
         timer = 0f;
     }
+
+    void ToggleCreativeLock()
+    {
+        Unlock();
+    }
+
 }
