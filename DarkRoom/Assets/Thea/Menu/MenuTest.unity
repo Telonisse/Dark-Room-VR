@@ -149,10 +149,11 @@ Transform:
   m_GameObject: {fileID: 304173102}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.002169, y: 0.000722, z: -0.00091}
+  m_LocalPosition: {x: 0, y: 0, z: 0.0007472835}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1452824023563763936}
   m_Father: {fileID: 1061780289}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &406634859 stripped
@@ -552,9 +553,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1452824023563763936}
-  - {fileID: 949402892}
   - {fileID: 304173103}
+  - {fileID: 949402892}
   - {fileID: 1741783097}
   m_Father: {fileID: 522158926445066247}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -570,7 +570,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07b3638c2f5db5b479ff24c2859713d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PokeFollowTransform: {fileID: 0}
+  m_PokeFollowTransform: {fileID: 304173103}
   m_SmoothingSpeed: 16
   m_ReturnToInitialPosition: 1
   m_ApplyIfChildIsTarget: 1
@@ -2771,11 +2771,11 @@ Transform:
   m_GameObject: {fileID: 5805356444722330284}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.0007472835}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1061780289}
+  m_Father: {fileID: 304173103}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1458772194878988366
 MeshRenderer:
@@ -6953,7 +6953,6 @@ GameObject:
   - component: {fileID: 1452824023563763936}
   - component: {fileID: 2029179358519266887}
   - component: {fileID: 2339111679705386340}
-  - component: {fileID: 5805356444722330286}
   m_Layer: 0
   m_Name: Play >
   m_TagString: Untagged
@@ -6961,27 +6960,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &5805356444722330286
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5805356444722330284}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.000022176653, y: 0.00035457438, z: 0.0012268453}
-  m_Center: {x: -0.0021610884, y: 0.0007202408, z: -0.0008735707}
 --- !u!65 &5810331587312532683
 BoxCollider:
   m_ObjectHideFlags: 0
