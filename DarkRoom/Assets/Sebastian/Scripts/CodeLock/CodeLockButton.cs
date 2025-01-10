@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class CodeLockButton : MonoBehaviour
@@ -13,6 +12,9 @@ public class CodeLockButton : MonoBehaviour
 
     private CodeLockOpen codeLock;
 
+    [Tooltip("Maximum distance from the collider to consider this button for selection.")]
+    public float maxSelectionDistance = 0.3f;
+
     private void Start()
     {
       codeLock =  theCodeLock.GetComponent<CodeLockOpen>();
@@ -20,11 +22,40 @@ public class CodeLockButton : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        WhenButtonSelected();
+        if (IsClosestButton(other.transform.position))
+        {
+            WhenButtonSelected();
+        }        
     }
 
     public void WhenButtonSelected()
     {
         codeLock.CodeButtonPressedUpdater(buttonNumber);
+    }
+
+    private bool IsClosestButton(Vector3 referencePosition)
+    {
+        // Get all colliders within the specified radius
+        Collider[] nearbyButtons = Physics.OverlapSphere(transform.position, maxSelectionDistance);
+
+        Collider closestButton = null;
+        float closestDistance = float.MaxValue;
+
+        foreach (var button in nearbyButtons)
+        {
+            // Check if the collider has a CodeLockButton script
+            if (button.GetComponent<CodeLockButton>() != null)
+            {
+                float distance = Vector3.Distance(referencePosition, button.transform.position);
+                if (distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    closestButton = button;
+                }
+            }
+        }
+
+        // Return true if this button is the closest
+        return closestButton != null && closestButton.gameObject == this.gameObject;
     }
 }
