@@ -9,18 +9,22 @@ public class VHSTrigger : MonoBehaviour
     private bool creditsTriggered = false;
 
     private bool isOpen = false;
+    private bool isSnapped = false;
 
     private void Start()
     { 
-        //animator need to be attachtedto object where this script is
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        if (isSnapped == true)
+        {
+            return;
+        }
         if ((other.CompareTag("Play") || other.CompareTag("Quit") || other.CompareTag("Credits")) && !isOpen)
         {
-            animator.SetBool("IsOpen", true);  // Start opening animation
+            animator.SetBool("IsOpen", true);  
             isOpen = true;
 
             if (other.CompareTag("Play"))
@@ -43,12 +47,17 @@ public class VHSTrigger : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        if (isSnapped == true)
+        {
+            return;
+        }
         if (playTriggered && other.CompareTag("Play") || quitTriggered && other.CompareTag("Quit") || creditsTriggered && other.CompareTag("Credits") && isOpen)
         {
             Debug.Log("it is exiting");
-            animator.SetBool("IsOpen", false);  // Start closing animation
+            animator.SetBool("IsOpen", false);  
             isOpen = false;
         }
+        
 
         if (other.CompareTag("Play"))
             playTriggered = false;
@@ -56,6 +65,18 @@ public class VHSTrigger : MonoBehaviour
             quitTriggered = false;
         else if (other.CompareTag("Credits"))
             creditsTriggered = false;
+        
+    }
+
+    public void snapping()
+    {
+        animator.SetBool("IsOpen", false);
+        isSnapped = true;
+    }
+
+    public void unSnapping()
+    {
+        isSnapped = false;
     }
 
     public bool PlayTriggered() => playTriggered;
