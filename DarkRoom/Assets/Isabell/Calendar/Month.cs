@@ -1,3 +1,5 @@
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Month : MonoBehaviour
@@ -21,9 +23,19 @@ public class Month : MonoBehaviour
         int row = index / columns;
         int col = index % columns;
 
-        Vector3 datePosition = firstDatePos + new Vector3(-col * spacingX, -row * spacingY, 0);
+        Vector3 datePosition = firstDatePos + new Vector3(col * spacingX, -row * spacingY, 0);
 
         circle.transform.localPosition = datePosition;
+
+        Vector3 start = circle.transform.position;
+        circle.transform.SetParent(this.transform);
+        StartCoroutine(CirclePos(start));
+    }
+
+    IEnumerator CirclePos(Vector3 pos)
+    {
+        yield return new WaitForSeconds(1);
+        circle.transform.position = pos;
     }
 
     public int GetCode()
