@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 public class VHSTrigger : MonoBehaviour
 {
@@ -77,6 +79,26 @@ public class VHSTrigger : MonoBehaviour
     public void unSnapping()
     {
         isSnapped = false;
+    }
+
+    public void CalculateWhatScene()
+    {
+        if (playTriggered == true)
+        {
+            Debug.Log("Starting Game");
+            SceneManager.LoadScene(1);
+        }
+        if (quitTriggered == true)
+        {
+            Debug.Log("Application Quit");
+            Application.Quit();
+        }
+        if (creditsTriggered == true)
+        {
+            Debug.Log("Starting credits scene");
+            SceneManager.LoadScene(2);
+        }
+        else return;
     }
 
     public bool PlayTriggered() => playTriggered;
