@@ -40,12 +40,16 @@ public class CodeLockOpen : MonoBehaviour
     [SerializeField]
     public List<XRGrabInteractable> doorNHingeGrab = new List<XRGrabInteractable>();
 
+    [Tooltip("List of doors to enable movement after unlocking")]
+    [SerializeField]
+    public List<GameObject> doorsToUnfreeze = new List<GameObject>();
+
     public bool creativeUnlock = false;
 
     private bool isUnlocked = false;
     private int currentCodeIndex = 0; // Tracks the progress of the entered code
     private List<GameObject> buttons = new List<GameObject>();
-    private float timer = 0f; // Timer counter
+    private float timer = 0f; // Timer counter    
     private bool hasExecuted = false;
     private Rigidbody rb;
     private void Awake()
@@ -87,7 +91,7 @@ public class CodeLockOpen : MonoBehaviour
             currentCodeIndex++;
             if (currentCodeIndex == 4) // Code is fully entered correctly
             {
-                Unlock();
+                animationUnlock();
             }
         }
         else
@@ -131,7 +135,7 @@ public class CodeLockOpen : MonoBehaviour
         }
     }
 
-    private void Unlock()
+    private void animationUnlock()
     {
         isUnlocked = true;
 
@@ -140,6 +144,12 @@ public class CodeLockOpen : MonoBehaviour
             unlockAnimation.SetTrigger("Unlocked");
         }
 
+        Invoke("Unlock", 2f);
+    }
+
+
+    private void Unlock()
+    {
         if (lockHook != null)
         {
             foreach (BoxCollider coll in lockHook.GetComponentsInChildren<BoxCollider>())
@@ -148,8 +158,19 @@ public class CodeLockOpen : MonoBehaviour
             }
 
             rb.useGravity = true;
-        }
 
+            foreach (GameObject door in doorsToUnfreeze)
+            {
+                Rigidbody rb = door.GetComponent<Rigidbody>();
+                if (rb != null)
+                {                    
+                    rb.constraints = RigidbodyConstraints.None;
+                }
+            }
+            DeActivateButtons();
+        }
+        GetComponent<CapsuleCollider>().enabled = true;
+        //GetComponent<Animator>().enabled = false;
         PlayCorrectCodeSound();
     }
 
@@ -206,7 +227,18 @@ public class CodeLockOpen : MonoBehaviour
 
     void ToggleCreativeLock()
     {
-        Unlock();
+        animationUnlock();
     }
 
+    void DeActivateButtons()
+    {
+        BoxCollider[] boxColliders = GetComponentsInChildren<BoxCollider>();
+        foreach (BoxCollider box in boxColliders)
+        {
+            if (box.gameObject.name.Contains("Button"))
+            {
+                box.enabled = false;
+            }
+        }
+    }
 }
