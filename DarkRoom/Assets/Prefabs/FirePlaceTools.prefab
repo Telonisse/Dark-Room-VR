@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 779223294666921707}
   - component: {fileID: 5233545171723483241}
   - component: {fileID: 7208606584814992538}
-  - component: {fileID: 7239353845492305017}
   - component: {fileID: 5086706139525527492}
   m_Layer: 0
   m_Name: ForkTool
@@ -71,7 +70,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: c0fda3d3080aed94c8787620302bef76, type: 3}
+  - {fileID: 2100000, guid: 7a4a303809fb7ca4ab1edd53623bc3a7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -183,29 +182,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.0032839472, y: 0.0017723644, z: 0.008429445}
   m_Center: {x: -0.002703348, y: -0.000000006662078, z: -0.019880166}
---- !u!136 &7239353845492305017
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1371381731876872414}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.003
-  m_Height: 0.007
-  m_Direction: 2
-  m_Center: {x: 0.0000000063764163, y: 0.0000000014173065, z: 0.019}
 --- !u!114 &5086706139525527492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,7 +196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
   m_Colliders:
-  - {fileID: 7239353845492305017}
+  - {fileID: 0}
   m_InteractionLayers:
     m_Bits: 1
   m_DistanceCalculationMode: 1
@@ -279,7 +255,7 @@ MonoBehaviour:
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
   m_StartingInteractionStrengthFilters: []
-  m_AttachTransform: {fileID: 0}
+  m_AttachTransform: {fileID: 2946467963022723114}
   m_SecondaryAttachTransform: {fileID: 0}
   m_UseDynamicAttach: 0
   m_MatchAttachPosition: 1
@@ -625,7 +601,6 @@ GameObject:
   - component: {fileID: 4701731816989971427}
   - component: {fileID: 1744107826144737338}
   - component: {fileID: 9013144303238022007}
-  - component: {fileID: 6666990311069882340}
   - component: {fileID: 9032928547985193230}
   m_Layer: 0
   m_Name: PikeTool
@@ -681,7 +656,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: c0fda3d3080aed94c8787620302bef76, type: 3}
+  - {fileID: 2100000, guid: 7a4a303809fb7ca4ab1edd53623bc3a7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -772,29 +747,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.002307858, y: 0.0023097026, z: 0.00083831034}
   m_Center: {x: -0.0020413233, y: -0.00002174224, z: -0.019196967}
---- !u!136 &6666990311069882340
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1623659591671193278}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.0028750263
-  m_Height: 0.007
-  m_Direction: 2
-  m_Center: {x: 0.00009054048, y: -0.000021739246, z: 0.019}
 --- !u!114 &9032928547985193230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -809,7 +761,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
   m_Colliders:
-  - {fileID: 6666990311069882340}
+  - {fileID: 0}
   m_InteractionLayers:
     m_Bits: 1
   m_DistanceCalculationMode: 1
@@ -868,7 +820,7 @@ MonoBehaviour:
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
   m_StartingInteractionStrengthFilters: []
-  m_AttachTransform: {fileID: 0}
+  m_AttachTransform: {fileID: 8363556214748981982}
   m_SecondaryAttachTransform: {fileID: 0}
   m_UseDynamicAttach: 0
   m_MatchAttachPosition: 1
@@ -932,7 +884,6 @@ GameObject:
   - component: {fileID: 5692377566069950853}
   - component: {fileID: 1462511012712045848}
   - component: {fileID: 4980759906341016377}
-  - component: {fileID: 192746016463900627}
   - component: {fileID: 1345394992794096024}
   m_Layer: 0
   m_Name: ScrapeTool
@@ -988,7 +939,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: c0fda3d3080aed94c8787620302bef76, type: 3}
+  - {fileID: 2100000, guid: 7a4a303809fb7ca4ab1edd53623bc3a7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1079,29 +1030,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.0020227118, y: 0.001772364, z: 0.029973706}
   m_Center: {x: -0.000097633776, y: 7.210617e-10, z: -0.0000014218889}
---- !u!136 &192746016463900627
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2006760357988966720}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.003
-  m_Height: 0.007
-  m_Direction: 2
-  m_Center: {x: 0.0000015038574, y: 8.048742e-10, z: 0.019}
 --- !u!114 &1345394992794096024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1116,7 +1044,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
   m_Colliders:
-  - {fileID: 192746016463900627}
+  - {fileID: 0}
   m_InteractionLayers:
     m_Bits: 1
   m_DistanceCalculationMode: 1
@@ -1175,7 +1103,7 @@ MonoBehaviour:
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
   m_StartingInteractionStrengthFilters: []
-  m_AttachTransform: {fileID: 0}
+  m_AttachTransform: {fileID: 380133445654799824}
   m_SecondaryAttachTransform: {fileID: 0}
   m_UseDynamicAttach: 0
   m_MatchAttachPosition: 1
@@ -1291,7 +1219,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: c0fda3d3080aed94c8787620302bef76, type: 3}
+  - {fileID: 2100000, guid: 4aaa46000dbe8cc428a4ca9da7df6010, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1987,7 +1915,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: c0fda3d3080aed94c8787620302bef76, type: 3}
+  - {fileID: 2100000, guid: 4aaa46000dbe8cc428a4ca9da7df6010, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2067,7 +1995,6 @@ GameObject:
   - component: {fileID: 4128703731655997711}
   - component: {fileID: 7066199156501645440}
   - component: {fileID: 1312463421276826319}
-  - component: {fileID: 6955540142798554283}
   - component: {fileID: 192700327513517759}
   m_Layer: 0
   m_Name: ShovelTool
@@ -2123,7 +2050,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: c0fda3d3080aed94c8787620302bef76, type: 3}
+  - {fileID: 2100000, guid: 7a4a303809fb7ca4ab1edd53623bc3a7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2214,29 +2141,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.002693914, y: 0.0017723645, z: 0.030514535}
   m_Center: {x: -0.00012548476, y: -0.0000000042026684, z: -0.0002718195}
---- !u!136 &6955540142798554283
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4753412759742031271}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.003
-  m_Height: 0.007
-  m_Direction: 2
-  m_Center: {x: 0.00003246251, y: 0.0000000051537916, z: 0.019}
 --- !u!114 &192700327513517759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2251,7 +2155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
   m_Colliders:
-  - {fileID: 6955540142798554283}
+  - {fileID: 0}
   m_InteractionLayers:
     m_Bits: 1
   m_DistanceCalculationMode: 1
@@ -2310,7 +2214,7 @@ MonoBehaviour:
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
   m_StartingInteractionStrengthFilters: []
-  m_AttachTransform: {fileID: 0}
+  m_AttachTransform: {fileID: 4173549258497034576}
   m_SecondaryAttachTransform: {fileID: 0}
   m_UseDynamicAttach: 0
   m_MatchAttachPosition: 1
@@ -2444,7 +2348,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: c0fda3d3080aed94c8787620302bef76, type: 3}
+  - {fileID: 2100000, guid: 7a4a303809fb7ca4ab1edd53623bc3a7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2474,8 +2378,8 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4770615176525852413}
   serializedVersion: 4
-  m_Mass: 5
-  m_Drag: 0
+  m_Mass: 50
+  m_Drag: 1
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -2790,7 +2694,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: c0fda3d3080aed94c8787620302bef76, type: 3}
+  - {fileID: 2100000, guid: 4aaa46000dbe8cc428a4ca9da7df6010, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2922,7 +2826,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: c0fda3d3080aed94c8787620302bef76, type: 3}
+  - {fileID: 2100000, guid: 4aaa46000dbe8cc428a4ca9da7df6010, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
