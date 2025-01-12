@@ -16,7 +16,6 @@ public class Drawer : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(rb.linearVelocity.x);
         if (rb.linearVelocity.x > 0.01f && openPlayed == false)
         {
             closePlayed = true;

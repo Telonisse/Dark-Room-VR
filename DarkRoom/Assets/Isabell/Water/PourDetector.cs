@@ -1,3 +1,4 @@
+using System.Media;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -15,12 +16,17 @@ public class PourDetector : MonoBehaviour
     private Renderer rend;
     private float maxLiquid;
 
-    private bool isPouring = false;
+    public bool isPouring = false;
     private Stream currentStream = null;
 
     [SerializeField] float bucketRadius = 0.5f;
 
     private bool hora = false;
+
+    //Audio
+    [SerializeField] AudioSource soundFilling;
+    [SerializeField] AudioSource soundPourningOther;
+    [SerializeField] AudioSource soundPouringFire;
 
     private void Start()
     {
@@ -43,6 +49,10 @@ public class PourDetector : MonoBehaviour
             else
             {
                 EndPour();
+                if (soundPourningOther.isPlaying == true)
+                {
+                    soundPourningOther.Stop();
+                }
             }
         }
 
@@ -64,6 +74,17 @@ public class PourDetector : MonoBehaviour
                 {
                     hora = true;
                     hit.transform.GetComponent<BurnUpObjects>().WaterOn();
+                    if (soundPouringFire.isPlaying == false)
+                    {
+                        soundPouringFire.Play();
+                    }
+                }
+            }
+            else if (pourCheck == true)
+            {
+                if (soundPourningOther.isPlaying == false)
+                {
+                    soundPourningOther.Play();
                 }
             }
         }
@@ -116,6 +137,17 @@ public class PourDetector : MonoBehaviour
         if(other.tag == "Rain")
         {
             FillLiquid();
+            if (soundFilling.isPlaying == false)
+            {
+                soundFilling.Play();
+            }
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Rain" && soundFilling.isPlaying == true)
+        {
+            soundFilling.Stop();
         }
     }
 
