@@ -62,9 +62,10 @@ public class CodeLockOpen : MonoBehaviour
         if (!hasExecuted)
         {
             timer += Time.deltaTime;
-            if (timer >= 2f)
+            if (timer >= 4f)
             {
                 hasExecuted = true;
+                Debug.LogWarning("Code From Calender Get");
                 ExecuteAfterDelay();
             }
         }
@@ -143,7 +144,9 @@ public class CodeLockOpen : MonoBehaviour
         {
             unlockAnimation.SetTrigger("Unlocked");
         }
-
+        DeActivateButtons();
+        GetComponent<CapsuleCollider>().enabled = true;
+        PlayCorrectCodeSound();
         Invoke("Unlock", 2f);
     }
 
@@ -167,11 +170,8 @@ public class CodeLockOpen : MonoBehaviour
                     rb.constraints = RigidbodyConstraints.None;
                 }
             }
-            DeActivateButtons();
-        }
-        GetComponent<CapsuleCollider>().enabled = true;
-        //GetComponent<Animator>().enabled = false;
-        PlayCorrectCodeSound();
+        }        
+        //GetComponent<Animator>().enabled = false;        
     }
 
     private void splitStringCode(string code)
