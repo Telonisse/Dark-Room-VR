@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class DoorHandle : MonoBehaviour
@@ -61,5 +63,16 @@ public class DoorHandle : MonoBehaviour
     public void Released()
     {
         this.GetComponent<HingeJoint>().useSpring = true;
+    }
+
+    public void Exit()
+    {
+        StartCoroutine(ExitScene());
+    }
+
+    IEnumerator ExitScene()
+    {
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(0);
     }
 }
