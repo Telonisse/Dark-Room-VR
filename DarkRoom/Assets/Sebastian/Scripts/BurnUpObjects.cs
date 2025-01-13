@@ -33,6 +33,7 @@ public class BurnUpObjects : SerialDataTransciever
     [SerializeField] Light pointLight;
     [SerializeField] ParticleSystem smokeOnWater;
     [SerializeField] ParticleSystem afterSmoke;
+    [SerializeField] AudioSource soundFire;
 
     private Vector3 exchangeTransform;
     private Quaternion exchangeRotation;
@@ -171,6 +172,7 @@ public class BurnUpObjects : SerialDataTransciever
         fire.Stop();
         pointLight.gameObject.SetActive(false);
         smokeOnWater.Play();
+        soundFire.Stop();
 
         float timer = 0f;
         bool timerActive = true;
