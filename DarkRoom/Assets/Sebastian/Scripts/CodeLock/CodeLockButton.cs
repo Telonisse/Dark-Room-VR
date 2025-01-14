@@ -30,6 +30,8 @@ public class CodeLockButton : MonoBehaviour
 
     public void WhenButtonSelected()
     {
+        AudioSource btnklicked = GetComponent<AudioSource>();
+        if (btnklicked != null) { btnklicked.Play();}
         codeLock.CodeButtonPressedUpdater(buttonNumber);
     }
 

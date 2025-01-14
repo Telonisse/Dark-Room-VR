@@ -64,8 +64,7 @@ public class CodeLockOpen : MonoBehaviour
             timer += Time.deltaTime;
             if (timer >= 4f)
             {
-                hasExecuted = true;
-                Debug.LogWarning("Code From Calender Get");
+                hasExecuted = true;                
                 ExecuteAfterDelay();
             }
         }
@@ -182,11 +181,16 @@ public class CodeLockOpen : MonoBehaviour
             return;
         }
 
+        // Replace '0' with '9' in the code
+        code = code.Replace('0', '9');
+
         // Assign values to class-level variables
         c1 = code[0] - '0';
         c2 = code[1] - '0';
         c3 = code[2] - '0';
         c4 = code[3] - '0';
+
+        Debug.LogWarning("Code is " + c1 + c2 + c3 + c4);
     }
 
     private void addButtonsToList(string refName)
@@ -223,6 +227,7 @@ public class CodeLockOpen : MonoBehaviour
         addButtonsToList(childButtonName);
         splitStringCode(code);
         timer = 0f;
+        Debug.LogWarning("Code From Calender is :" + code);
     }
 
     void ToggleCreativeLock()
