@@ -13,6 +13,7 @@ public class VHSTrigger : MonoBehaviour
     private bool isOpen = false;
     private bool isSnapped = false;
 
+    public GameObject showToPressPlay;
     private void Start()
     { 
         animator = GetComponentInChildren<Animator>();
@@ -73,12 +74,14 @@ public class VHSTrigger : MonoBehaviour
     public void snapping()
     {
         animator.SetBool("IsOpen", false);
+        showToPressPlay.SetActive(true);
         isSnapped = true;
     }
 
     public void unSnapping()
     {
         isSnapped = false;
+        showToPressPlay.SetActive(false);
     }
 
     public void CalculateWhatScene()
@@ -86,7 +89,7 @@ public class VHSTrigger : MonoBehaviour
         if (playTriggered == true)
         {
             Debug.Log("Starting Game");
-            SceneManager.LoadScene(1);
+            SceneManager.LoadSceneAsync(1);
         }
         if (quitTriggered == true)
         {
@@ -96,7 +99,7 @@ public class VHSTrigger : MonoBehaviour
         if (creditsTriggered == true)
         {
             Debug.Log("Starting credits scene");
-            SceneManager.LoadScene(2);
+            SceneManager.LoadSceneAsync(2);
         }
         else return;
     }

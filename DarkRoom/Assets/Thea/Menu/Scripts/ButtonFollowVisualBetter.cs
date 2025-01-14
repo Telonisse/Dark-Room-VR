@@ -3,7 +3,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
 
-public class ButtonFollowVisual : MonoBehaviour
+public class ButtonFollowVisualBetter : MonoBehaviour
 {
     public Transform visualTarget;
     public Vector3 localAxis;
@@ -19,6 +19,7 @@ public class ButtonFollowVisual : MonoBehaviour
 
     private XRBaseInteractable interactable;
     private bool isFollowing = false;
+
     private void Start()
     {
         initialLocalPos = visualTarget.localPosition;
@@ -32,7 +33,7 @@ public class ButtonFollowVisual : MonoBehaviour
 
     public void Follow(BaseInteractionEventArgs hover)
     {
-        if(hover.interactorObject is XRPokeInteractor)
+        if (hover.interactorObject is XRPokeInteractor)
         {
             XRPokeInteractor interactor = (XRPokeInteractor)hover.interactorObject;
 
@@ -51,7 +52,7 @@ public class ButtonFollowVisual : MonoBehaviour
 
     public void Resetbetter(BaseInteractionEventArgs hover)
     {
-        if(hover.interactorObject is XRPokeInteractor)
+        if (hover.interactorObject is XRPokeInteractor)
         {
             isFollowing = false;
             freeze = false;
@@ -71,7 +72,7 @@ public class ButtonFollowVisual : MonoBehaviour
         if (freeze)
             return;
 
-        if(isFollowing)
+        if (isFollowing)
         {
             Vector3 localTargetPosition = visualTarget.InverseTransformPoint(pokeAttachTransform.position + offset);
             Vector3 constrainedLocalTargetPosition = Vector3.Project(localTargetPosition, localAxis);
