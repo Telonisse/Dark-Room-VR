@@ -35,6 +35,7 @@ public class LockIpodToDocker : MonoBehaviour
                     rb.isKinematic = true;
                     rb.useGravity = false;
                     isDocked = true;
+                    GetComponentInChildren<PlayMusicIpod>().enabled = true;                       
                 }
             }
         }
@@ -52,6 +53,7 @@ public class LockIpodToDocker : MonoBehaviour
                     rb.isKinematic = false;
                     rb.useGravity = true;
                     isDocked = false;
+                    GetComponentInChildren<PlayMusicIpod>().enabled = false;
                 }
             }
         }

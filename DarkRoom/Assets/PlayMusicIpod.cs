@@ -1,37 +1,78 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Audio;
 
 public class PlayMusicIpod : MonoBehaviour
 {
-    public List<AudioResource> audioResources;
-    public float volume = 1f;
-    
-    private AudioSource audioSource;
-    private bool onOff;
+    [Tooltip("List of audio clips to play randomly")]
+    public List<AudioClip> audioResources;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [Tooltip("Volume of the audio player")]
+    public float volume = 1f;
+
+    private AudioSource audioSource;
+    private bool isPlaying = false;
+    private int musicIndex = -1;
+
     void Start()
     {
+        // Initialize the AudioSource
         audioSource = GetComponent<AudioSource>();
-        audioResources = new List<AudioResource>();
-        audioSource.volume = volume;
-        onOff = true;
-}
-
-
-    public void OnOffMusic()
-    {
-        if (onOff)
-        { 
-            audioSource.Play();
-            onOff = !onOff;
-        }
-        if (!onOff)
+        if (audioSource == null)
         {
-            audioSource.Stop();
-            onOff = !onOff;
+            audioSource = gameObject.AddComponent<AudioSource>();
         }
+
+        // Set the audio source volume
+        audioSource.volume = volume;
     }
 
+    public void ToggleMusic()
+    {
+        if (isPlaying)
+        {
+            audioSource.Stop();
+        }
+        else
+        {
+            PlayRandomSong();
+        }
+
+        isPlaying = !isPlaying;
+    }
+
+    public void PlayRandomSong()
+    {
+        if (audioResources == null || audioResources.Count == 0)
+        {
+            Debug.LogWarning("Audio resources list is empty or null.");
+            return;
+        }
+
+        int previousIndex = musicIndex;
+
+        // Generate a new random index that is different from the current one
+        do
+        {
+            musicIndex = Random.Range(0, audioResources.Count);
+        } while (musicIndex == previousIndex);
+
+        SetSongToPlayer(musicIndex);
+    }
+
+    private void SetSongToPlayer(int index)
+    {
+        // Assign the selected audio clip and play
+        audioSource.clip = audioResources[index];
+        audioSource.Play();
+        isPlaying = true;
+    }
+
+    private void OnDestroy()
+    {
+        // Ensure the audio source stops playing when the object is destroyed
+        if (audioSource != null)
+        {
+            audioSource.Stop();
+        }
+    }
 }
