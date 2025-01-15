@@ -73,6 +73,6 @@ public class DoorHandle : MonoBehaviour
     IEnumerator ExitScene()
     {
         yield return new WaitForSeconds(1);
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(2);
     }
 }
