@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: v1.0.7
-  serialPort: COM18
+  serialPort: COM3
   baudRate: 115200
   debugLogAllData: 0
   debugLogCommentData: 0
