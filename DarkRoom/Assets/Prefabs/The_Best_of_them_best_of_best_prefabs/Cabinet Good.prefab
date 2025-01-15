@@ -851,6 +851,7 @@ GameObject:
   - component: {fileID: 7871852548974394689}
   - component: {fileID: 6330655416975029444}
   - component: {fileID: 7067076239674462291}
+  - component: {fileID: 3358476425950279653}
   m_Layer: 0
   m_Name: CabinetDrawerUpL
   m_TagString: Untagged
@@ -1308,6 +1309,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.0002, y: 0.001, z: 0.001}
   m_Center: {x: 0.0028, y: -6.984918e-10, z: 5.8207654e-11}
+--- !u!65 &3358476425950279653
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3290478616750889632}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.004, y: 0.009, z: 0.0003}
+  m_Center: {x: 0.00062176486, y: 0, z: -0.001}
 --- !u!1 &3296330264917163854
 GameObject:
   m_ObjectHideFlags: 0
@@ -2136,6 +2158,7 @@ GameObject:
   - component: {fileID: 4704615518767638564}
   - component: {fileID: 563503738743431794}
   - component: {fileID: 2379421787163231694}
+  - component: {fileID: 202988102548129664}
   m_Layer: 0
   m_Name: CabinetDrawerUpR
   m_TagString: Untagged
@@ -2593,6 +2616,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &202988102548129664
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8176788924301915064}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.004, y: 0.009, z: 0.0003}
+  m_Center: {x: 0.00062176486, y: 0, z: -0.001}
 --- !u!1 &8855711433613723633
 GameObject:
   m_ObjectHideFlags: 0
@@ -2611,6 +2655,7 @@ GameObject:
   - component: {fileID: 6002177056263572909}
   - component: {fileID: 5069570985268978220}
   - component: {fileID: 4560741632447388280}
+  - component: {fileID: 1955560181336400385}
   m_Layer: 0
   m_Name: CabinetDrawerDownR
   m_TagString: Untagged
@@ -3068,6 +3113,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &1955560181336400385
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8855711433613723633}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.004, y: 0.009, z: 0.0003}
+  m_Center: {x: 0.00062176486, y: 0, z: -0.001}
 --- !u!1 &8877147098742262194
 GameObject:
   m_ObjectHideFlags: 0
@@ -3086,6 +3152,7 @@ GameObject:
   - component: {fileID: 6848731897804847271}
   - component: {fileID: 6466338640500410033}
   - component: {fileID: 4848708353714885632}
+  - component: {fileID: 1154455831885845949}
   m_Layer: 0
   m_Name: CabinetDrawerDownL
   m_TagString: Untagged
@@ -3543,3 +3610,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &1154455831885845949
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8877147098742262194}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.004, y: 0.009, z: 0.0003}
+  m_Center: {x: 0.00062176486, y: 0, z: -0.001}
