@@ -4276,7 +4276,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2000073590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6654,6 +6654,10 @@ PrefabInstance:
     - target: {fileID: 2958224227933063841, guid: bda18dc6cb5e4c142a22eb39ca5bf975, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4108497414439403617, guid: bda18dc6cb5e4c142a22eb39ca5bf975, type: 3}
+      propertyPath: serialPort
+      value: COM18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

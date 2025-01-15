@@ -348,7 +348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   window: {fileID: 2702630883786707856}
   rotateCheck: 350
-  sound: {fileID: 0}
+  sound: {fileID: 3254838707622385578}
 --- !u!82 &3254838707622385578
 AudioSource:
   m_ObjectHideFlags: 0
