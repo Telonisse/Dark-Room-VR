@@ -5511,6 +5511,7 @@ GameObject:
   - component: {fileID: 515528764813201121}
   - component: {fileID: 1145208236158685929}
   - component: {fileID: 8357952754331569170}
+  - component: {fileID: 8357952754331569171}
   m_Layer: 0
   m_Name: Roof_Planks
   m_TagString: Untagged
@@ -10423,6 +10424,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8357952754331569171
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3413325768257521565}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.56536317, y: 0.7030599, z: 0.0037904459}
+  m_Center: {x: -0.060630903, y: 0.05666973, z: 0.000114078226}
 --- !u!33 &8382755737179210993
 MeshFilter:
   m_ObjectHideFlags: 0
